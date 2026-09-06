@@ -115,6 +115,16 @@
     <!-- Sticky Header Navigation -->
     <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-rose-100 shadow-sm no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Global Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 py-2 border-b border-gray-100 text-xs sm:text-sm font-semibold text-gray-600 no-print">
+                <a href="index.html" class="hover:text-chinaRed-700 transition">Home</a>
+                <a href="7thgrade.html" class="hover:text-chinaRed-700 transition">7th Grade</a>
+                <a href="8thgrade.html" class="hover:text-chinaRed-700 transition">8th Grade</a>
+                <a href="9thgrade.html" class="hover:text-chinaRed-700 transition">9th Grade</a>
+                <a href="10thgrade.html" class="hover:text-chinaRed-700 transition">10th Grade</a>
+                <a href="11thgrade.html" class="hover:text-chinaRed-700 transition">11th Grade</a>
+                <a href="12thgrade.html" class="hover:text-chinaRed-700 transition">12th Grade</a>
+            </div>
             <div class="flex items-center justify-between h-16 sm:h-20">
                 
                 <!-- School & Class Badge -->
@@ -128,7 +138,7 @@
                             <span class="text-xs font-semibold text-slate-500 hidden sm:inline">JQUS • Boston Public Schools</span>
                         </div>
                         <h1 class="text-lg sm:text-xl font-extrabold text-slate-900 font-chinese tracking-tight">
-                            中文课 Day 1 • Ms. Zhao
+                            中文课 • Ms. Zhao
                         </h1>
                     </div>
                 </div>
@@ -187,14 +197,14 @@
                             </span>
                         </h2>
                         <p class="text-rose-100 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-                            Today marks Day 1 of our exciting journey into Mandarin Chinese. Learning Chinese is not about memorizing endless symbols—it's an interactive adventure through **Speaking, Writing, Listening, and Reading!**
+                            Welcome to our exciting journey into Mandarin Chinese. Learning Chinese is not about memorizing endless symbols—it's an interactive adventure through **Speaking, Writing, Listening, and Reading!**
                         </p>
 
                         <!-- Call to Action Buttons -->
                         <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
                             <a href="#speaking" class="px-5 py-3 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center space-x-2">
                                 <i class="fas fa-play-circle text-lg"></i>
-                                <span>Start Day 1 Practice</span>
+                                <span>Start Practice</span>
                             </a>
                             <a href="#passport" class="px-5 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/30 rounded-xl font-semibold text-sm backdrop-blur-sm transition flex items-center space-x-2">
                                 <i class="fas fa-id-card"></i>
@@ -266,7 +276,7 @@
         <section id="pillars" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <span class="text-xs font-extrabold uppercase tracking-widest text-chinaRed-700 bg-rose-100 px-3 py-1 rounded-full">
-                    Day 1 Roadmap
+                    Course Roadmap
                 </span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-chinese mt-3">
                     How We Learn Chinese in 7th Grade
@@ -828,7 +838,7 @@
             </div>
         </section>
 
-        <!-- Day 1 Readiness Checklist & Passport Generator -->
+        <!-- Student Readiness Checklist & Passport Generator -->
         <section class="py-12 bg-rose-900 text-white oriental-pattern">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -839,7 +849,7 @@
                             <div>
                                 <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Interactive Goal</span>
                                 <h3 class="text-xl sm:text-2xl font-black font-chinese">
-                                    ✅ Day 1 Student Readiness
+                                    ✅ Student Readiness
                                 </h3>
                             </div>
                             <span id="checklist-counter" class="text-xs font-bold bg-amber-400 text-slate-900 px-3 py-1 rounded-full">
@@ -894,7 +904,7 @@
                                 <h3 class="text-xl font-black font-chinese">
                                     My 7th Grade Chinese Passport
                                 </h3>
-                                <p class="text-xs text-slate-500">Generate your personalized Day 1 student badge!</p>
+                                <p class="text-xs text-slate-500">Generate your personalized student badge!</p>
                             </div>
                         </div>
 
@@ -917,7 +927,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block font-bold text-slate-700 mb-1">Day 1 Learning Goal:</label>
+                                    <label class="block font-bold text-slate-700 mb-1">Learning Goal:</label>
                                     <input type="text" id="passport-goal" placeholder="e.g. Master all 4 tones!" oninput="renderPassport()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-chinaRed-600 focus:outline-none font-medium">
                                 </div>
                             </div>
@@ -947,7 +957,7 @@
                                     </div>
                                     <div>
                                         <p class="text-[10px] text-rose-200 uppercase font-bold">Class Status</p>
-                                        <p class="font-bold text-emerald-300">Official Day 1 Learner</p>
+                                        <p class="font-bold text-emerald-300">Official Chinese Learner</p>
                                     </div>
                                 </div>
 
@@ -1307,7 +1317,7 @@
             }
         }
 
-        // --- Day 1 Readiness Checklist Logic ---
+        // --- Student Readiness Checklist Logic ---
         function updateChecklist() {
             const items = document.querySelectorAll('.checklist-item');
             let completed = 0;
@@ -1320,7 +1330,7 @@
             document.getElementById('checklist-progress').style.width = `${percent}%`;
 
             if (completed === items.length) {
-                showToast("🌟 Congratulations! You are 100% Day 1 Ready for Ms. Zhao's Chinese Class!");
+                showToast("🌟 Congratulations! You are 100% Ready for Ms. Zhao's Chinese Class!");
                 if (typeof confetti === 'function') {
                     confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
                 }
