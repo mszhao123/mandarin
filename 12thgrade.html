@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12th Grade IB DP Chinese | Ms. Zhao - JQUS</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        chinaRed: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                        },
+                        imperialGold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        jadeTeal: {
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                        },
+                        paperBg: '#fdfbf7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['"Noto Serif SC"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #1f2937;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-chinese {
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        /* Tian Zi Ge Pattern */
+        .tianzige-bg {
+            background-image: 
+                linear-gradient(to right, rgba(225, 29, 72, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(225, 29, 72, 0.15) 1px, transparent 1px);
+            background-size: 100% 100%;
+        }
+
+        /* Scholarly Imperial Oriental Pattern Header */
+        .oriental-pattern {
+            background-color: #1e1b4b;
+            background-image: radial-gradient(#fbbf24 0.75px, transparent 0.75px), radial-gradient(#fbbf24 0.75px, #1e1b4b 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.98;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #be123c;
+            border-radius: 4px;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Toast Notification Container -->
+    <div id="toast" class="fixed top-20 right-5 z-50 transform translate-x-full transition-transform duration-300 ease-in-out bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 pointer-events-none">
+        <i id="toast-icon" class="fas fa-check-circle text-emerald-400 text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">Notification message</span>
+    </div>
+
+    <!-- Sticky Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-indigo-100 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                
+                <!-- School & Class Badge -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-indigo-900 via-indigo-700 to-chinaRed-700 flex items-center justify-center text-amber-300 font-bold text-xl shadow-md border-2 border-amber-300">
+                        DP2
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-bold uppercase tracking-wider bg-indigo-100 text-indigo-900 px-2 py-0.5 rounded-md">Grade 12 • IB DP Year 2</span>
+                            <span class="text-xs font-semibold text-slate-500 hidden sm:inline">JQUS • Boston Public Schools</span>
+                        </div>
+                        <h1 class="text-lg sm:text-xl font-extrabold text-slate-900 font-chinese tracking-tight">
+                            中文 IB DP Language B • Ms. Zhao
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-semibold text-slate-600">
+                    <a href="#welcome" class="px-3 py-2 rounded-lg hover:text-indigo-700 hover:bg-indigo-50 transition">
+                        <i class="fas fa-graduation-cap mr-1 text-indigo-600"></i> Welcome
+                    </a>
+                    <a href="#themes" class="px-3 py-2 rounded-lg hover:text-indigo-700 hover:bg-indigo-50 transition">
+                        <i class="fas fa-globe mr-1 text-amber-500"></i> 5 IB Themes
+                    </a>
+                    <a href="#speaking" class="px-3 py-2 rounded-lg hover:text-indigo-700 hover:bg-indigo-50 transition">
+                        <i class="fas fa-comments mr-1 text-emerald-600"></i> IO Oral (口语)
+                    </a>
+                    <a href="#writing" class="px-3 py-2 rounded-lg hover:text-indigo-700 hover:bg-indigo-50 transition">
+                        <i class="fas fa-pen-nib mr-1 text-blue-600"></i> Paper 1 (写作)
+                    </a>
+                    <a href="#listening" class="px-3 py-2 rounded-lg hover:text-indigo-700 hover:bg-indigo-50 transition">
+                        <i class="fas fa-headphones mr-1 text-purple-600"></i> Paper 2 (听力)
+                    </a>
+                    <a href="#readiness" class="px-3 py-2 rounded-lg hover:text-indigo-700 hover:bg-indigo-50 transition">
+                        <i class="fas fa-check-double mr-1 text-teal-600"></i> Senior Checklist
+                    </a>
+                    <a href="#badge" class="px-3 py-2 rounded-lg hover:text-indigo-700 hover:bg-indigo-50 transition">
+                        <i class="fas fa-award mr-1 text-rose-600"></i> Scholar Badge
+                    </a>
+                </nav>
+
+                <!-- Action CTA -->
+                <div class="flex items-center space-x-2">
+                    <button onclick="openSyllabusModal()" class="px-3 sm:px-4 py-2 bg-slate-900 text-white rounded-xl text-xs sm:text-sm font-semibold hover:bg-indigo-800 transition shadow-sm flex items-center space-x-1.5">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>Senior Syllabus</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+
+        <!-- Hero & Welcome Section -->
+        <section id="welcome" class="relative overflow-hidden oriental-pattern text-white py-12 sm:py-20 px-4 sm:px-6 lg:px-8 shadow-inner">
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left: Hero Text -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 bg-amber-400/20 backdrop-blur-md border border-amber-300/40 text-amber-200 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium">
+                            <i class="fas fa-award text-amber-300"></i>
+                            <span>Josiah Quincy Upper School • Grade 12 Senior Diploma Track</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black font-chinese leading-tight tracking-tight text-white drop-shadow-md">
+                            十二年级 IB 中文毕业冲刺! <br>
+                            <span class="text-amber-300 text-2xl sm:text-4xl lg:text-5xl font-sans font-extrabold block mt-2">
+                                Welcome to 12th Grade IB DP Chinese (Year 2)
+                            </span>
+                        </h2>
+                        <p class="text-indigo-100 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                            Welcome Seniors! This final year is dedicated to mastering the IB Examinations: **Paper 1 Text-Type Writing, Paper 2 Listening & Reading Comprehension, and the final Individual Oral (IO)**.
+                        </p>
+
+                        <!-- Call to Action Buttons -->
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
+                            <a href="#speaking" class="px-5 py-3 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center space-x-2">
+                                <i class="fas fa-comments text-lg"></i>
+                                <span>Master Senior IO Commentary</span>
+                            </a>
+                            <a href="#readiness" class="px-5 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/30 rounded-xl font-semibold text-sm backdrop-blur-sm transition flex items-center space-x-2">
+                                <i class="fas fa-tasks"></i>
+                                <span>Senior Readiness Checklist</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Teacher Intro Card -->
+                    <div class="lg:col-span-5">
+                        <div class="glass-card rounded-3xl p-6 sm:p-8 text-slate-800 shadow-2xl relative border-2 border-amber-200/50">
+                            <div class="flex items-center space-x-4 mb-5">
+                                <div class="relative">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-indigo-900 to-chinaRed-700 flex items-center justify-center text-amber-300 font-chinese font-bold text-3xl sm:text-4xl shadow-md border-2 border-amber-300">
+                                        赵
+                                    </div>
+                                    <span class="absolute -bottom-1 -right-1 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-white shadow-sm">Online</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl sm:text-2xl font-black text-slate-900 font-chinese">
+                                        Ms. Zhao <span class="text-indigo-700 font-normal text-lg">(赵老师)</span>
+                                    </h3>
+                                    <p class="text-xs sm:text-sm font-semibold text-slate-500">
+                                        IB DP Chinese Educator
+                                    </p>
+                                    <div class="mt-1 flex items-center text-xs font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md inline-block">
+                                        <i class="fas fa-school mr-1 text-amber-600"></i> Josiah Quincy Upper School (JQUS)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-b border-indigo-100 py-4 my-4">
+                                <p>
+                                    <strong class="text-slate-900 font-semibold">Nǐ hǎo Seniors (你好)!</strong> Welcome to Year 2 of IB DP Mandarin. This is your graduation sprint towards final IB assessment success.
+                                </p>
+                                <p>
+                                    We will refine **Criterion A (Language), Criterion B (Message), and Criterion C (Conceptual Understanding)** through precise rhetorical structures and in-depth thematic analysis.
+                                </p>
+                            </div>
+
+                            <!-- Contact Card with Copy Email -->
+                            <div class="bg-indigo-50/70 rounded-2xl p-3.5 border border-indigo-100 flex items-center justify-between">
+                                <div class="flex items-center space-x-3 overflow-hidden">
+                                    <div class="w-9 h-9 rounded-xl bg-indigo-800 text-white flex items-center justify-center text-sm shrink-0">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="truncate">
+                                        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Teacher Email</p>
+                                        <p id="teacher-email" class="text-xs sm:text-sm font-mono font-bold text-slate-800 truncate">
+                                            yzhao@bostonpublicschools.org
+                                        </p>
+                                    </div>
+                                </div>
+                                <button onclick="copyTeacherEmail()" class="shrink-0 ml-2 px-3 py-1.5 bg-white text-indigo-800 border border-indigo-200 rounded-lg text-xs font-bold hover:bg-indigo-800 hover:text-white transition shadow-xs flex items-center space-x-1" title="Copy Email">
+                                    <i class="fas fa-copy"></i>
+                                    <span class="hidden sm:inline">Copy</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Core IB DP Themes Section -->
+        <section id="themes" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-800 bg-indigo-100 px-3 py-1 rounded-full">
+                    Senior IB Assessment Domains
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-chinese mt-3">
+                    The 5 IB DP Themes (五大核心主题)
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                    Senior examinations test your ability to evaluate global issues and cultural nuances through these 5 core themes.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                
+                <!-- Theme 1 -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-lg transition">
+                    <div class="w-10 h-10 rounded-xl bg-rose-100 text-chinaRed-700 flex items-center justify-center text-xl font-bold font-chinese mb-3">
+                        身
+                    </div>
+                    <div class="text-[10px] font-bold text-rose-600 uppercase tracking-wider">Theme 01</div>
+                    <h3 class="text-base font-bold text-slate-900 mt-1 font-chinese">Identities (身份认同)</h3>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        Lifestyles, mental health, language identity, and personal values in a globalized world.
+                    </p>
+                </div>
+
+                <!-- Theme 2 -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-lg transition">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold font-chinese mb-3">
+                        体
+                    </div>
+                    <div class="text-[10px] font-bold text-amber-600 uppercase tracking-wider">Theme 02</div>
+                    <h3 class="text-base font-bold text-slate-900 mt-1 font-chinese">Experiences (体验)</h3>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        Travel, migration, cultural traditions, life stories, and rites of passage.
+                    </p>
+                </div>
+
+                <!-- Theme 3 -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-lg transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold font-chinese mb-3">
+                        创
+                    </div>
+                    <div class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Theme 03</div>
+                    <h3 class="text-base font-bold text-slate-900 mt-1 font-chinese">Human Ingenuity (人类创造)</h3>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        Artificial Intelligence, scientific ethics, digital communication, and artistic creation.
+                    </p>
+                </div>
+
+                <!-- Theme 4 -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-lg transition">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl font-bold font-chinese mb-3">
+                        社
+                    </div>
+                    <div class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Theme 04</div>
+                    <h3 class="text-base font-bold text-slate-900 mt-1 font-chinese">Social Organization (社会组织)</h3>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        Educational equity, future workplace, community responsibility, and social justice.
+                    </p>
+                </div>
+
+                <!-- Theme 5 -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-lg transition">
+                    <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl font-bold font-chinese mb-3">
+                        球
+                    </div>
+                    <div class="text-[10px] font-bold text-purple-600 uppercase tracking-wider">Theme 05</div>
+                    <h3 class="text-base font-bold text-slate-900 mt-1 font-chinese">Sharing the Planet (共享地球)</h3>
+                    <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        Climate change, environmental trade-offs, sustainability, and human rights.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Pillar 1: Speaking / Oral Assessment Prep -->
+        <section id="speaking" class="py-12 bg-emerald-950/5 border-y border-emerald-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 text-emerald-800 font-bold text-xs uppercase tracking-wider bg-emerald-100 px-3 py-1 rounded-full">
+                            <i class="fas fa-comments"></i>
+                            <span>Senior Individual Oral (IO) High-Scoring Rhetoric</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-black text-slate-900 font-chinese mt-2">
+                            说 (Shuō) • Senior IO Advanced Commentary
+                        </h2>
+                        <p class="text-slate-600 text-sm sm:text-base mt-1">
+                            Senior IO scoring requires fluent use of advanced transitional phrases, precise vocabulary, and analytical depth. Click to listen!
+                        </p>
+                    </div>
+
+                    <div class="bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-xs flex items-center space-x-3 self-start md:self-auto">
+                        <span class="text-xs font-bold text-slate-600"><i class="fas fa-gauge-high text-emerald-600 mr-1"></i> Speed:</span>
+                        <button onclick="setAudioSpeed(0.65)" id="speed-slow" class="px-2 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-600 hover:bg-emerald-50">Slow</button>
+                        <button onclick="setAudioSpeed(0.85)" id="speed-normal" class="px-2 py-1 text-xs font-bold rounded-lg bg-emerald-600 text-white shadow-xs">Normal</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                    
+                    <!-- Phrase 1 -->
+                    <div onclick="speakChinese('这幅图片生动地展示了全球化带来的影响', 'Zhè fú túpiàn shēngdòng de zhǎnshì le quánqiúhuà dài lái de yǐngxiǎng')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">这幅图片生动地展示了...</span>
+                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
+                                <i class="fas fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm font-semibold text-emerald-600 mt-2">Zhè fú túpiàn shēngdòng de zhǎnshì le...</p>
+                        <p class="text-xs text-slate-500 mt-0.5">This picture vividly demonstrates...</p>
+                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
+                            💡 High-scoring opening hook for visual stimulus presentation in IO.
+                        </div>
+                    </div>
+
+                    <!-- Phrase 2 -->
+                    <div onclick="speakChinese('深入分析的话，我们可以发现社会习惯的变化', 'Shēnrù fēnxī de huà, wǒmen kěyǐ fāxiàn shèhuì xíguàn de biànhuà')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">深入分析的话，我们可以发现...</span>
+                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
+                                <i class="fas fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm font-semibold text-emerald-600 mt-2">Shēnrù fēnxī de huà, wǒmen kěyǐ fāxiàn...</p>
+                        <p class="text-xs text-slate-500 mt-0.5">Analyzing deeply, we can discover that...</p>
+                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
+                            💡 Transition phrase demonstrating analytical depth for Criterion B.
+                        </div>
+                    </div>
+
+                    <!-- Phrase 3 -->
+                    <div onclick="speakChinese('正如俗话所说，举一反三，我们需要全面思考', 'Zhèngrú súhuà suǒ shuō, jǔ yī fǎn sān, wǒmen xūyào quánmiàn sīkǎo')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">正如俗话所说，“举一反三”...</span>
+                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
+                                <i class="fas fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm font-semibold text-emerald-600 mt-2">Zhèngrú súhuà suǒ shuō, "jǔ yī fǎn sān"...</p>
+                        <p class="text-xs text-slate-500 mt-0.5">As the saying goes, "inferring three points from one"...</p>
+                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
+                            💡 Idiomatic expression adding sophistication to oral commentary.
+                        </div>
+                    </div>
+
+                    <!-- Phrase 4 -->
+                    <div onclick="speakChinese('综上所述，我认为解决这个问题的关键在于教育', 'Zōngshàng suǒshù, wǒ rènwéi jiějué zhè ge wèntí de guānjiàn zàiyú jiàoyù')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">综上所述，我认为...</span>
+                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
+                                <i class="fas fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm font-semibold text-emerald-600 mt-2">Zōngshàng suǒshù, wǒ rènwéi...</p>
+                        <p class="text-xs text-slate-500 mt-0.5">In conclusion, I believe the key to solving this lies in...</p>
+                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
+                            💡 Concluding synthesis phrase for the 4-minute presentation close.
+                        </div>
+                    </div>
+
+                    <!-- Phrase 5 -->
+                    <div onclick="speakChinese('不可否认的是，这个现象反映了现代社会的通病', 'Bù kě fǒurèn de shì, zhè ge xiànxiàng fǎnyìng le xiàndài shèhuì de tōngbì')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">不可否认的是...</span>
+                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
+                                <i class="fas fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm font-semibold text-emerald-600 mt-2">Bù kě fǒurèn de shì...</p>
+                        <p class="text-xs text-slate-500 mt-0.5">Undeniably, this phenomenon reflects...</p>
+                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
+                            💡 Strong evaluative clause showing command of complex syntax.
+                        </div>
+                    </div>
+
+                    <!-- Phrase 6 -->
+                    <div onclick="speakChinese('从双重角度来看，我们应当权衡利弊', 'Cóng shuāngzhòng jiǎodù lái kàn, wǒmen yīngdāng quánhéng lìbì')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">从双重角度来看...</span>
+                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
+                                <i class="fas fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm font-semibold text-emerald-600 mt-2">Cóng shuāngzhòng jiǎodù lái kàn...</p>
+                        <p class="text-xs text-slate-500 mt-0.5">Looking from a dual perspective, we should weigh pros and cons...</p>
+                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
+                            💡 Ideal for handling follow-up discussion questions in IO Part 2.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Pillar 2: Writing / DP Text Types & Canvas -->
+        <section id="writing" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
+                
+                <!-- Left: IB DP Text Types & Guidelines -->
+                <div class="lg:w-1/2 space-y-6">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 text-indigo-800 font-bold text-xs uppercase tracking-wider bg-indigo-100 px-3 py-1 rounded-full">
+                            <i class="fas fa-pen-nib"></i>
+                            <span>Paper 1 Exam Mastery: Text Types (文本类型)</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-black text-slate-900 font-chinese mt-2">
+                            写 (Xiě) • Senior Paper 1 Text Formats
+                        </h2>
+                        <p class="text-slate-600 text-sm sm:text-base mt-2">
+                            In Paper 1, seniors choose 1 prompt out of 3 options (250–400 words). Format adherence and formal discourse are critical for Criterion B!
+                        </p>
+                    </div>
+
+                    <!-- Text Types Grid -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                        <h3 class="text-base font-bold text-slate-900 flex items-center space-x-2">
+                            <i class="fas fa-layer-group text-indigo-600"></i>
+                            <span>Key Paper 1 Formats & Conventions</span>
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                            <div class="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100">
+                                <span class="font-bold text-indigo-950 block">1. 议论文 (Opinion Essay)</span>
+                                <span class="text-slate-600">Clear thesis, pros/cons counterarguments, evidence, logical conclusion.</span>
+                            </div>
+                            <div class="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100">
+                                <span class="font-bold text-indigo-950 block">2. 建议书 / 提议书 (Proposal)</span>
+                                <span class="text-slate-600">Recipient header, clear objectives, actionable suggestions, formal sign-off.</span>
+                            </div>
+                            <div class="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100">
+                                <span class="font-bold text-indigo-950 block">3. 采访记 / 访谈录 (Interview)</span>
+                                <span class="text-slate-600">Interviewee intro, Q&A layout (问/答), reflective closing summary.</span>
+                            </div>
+                            <div class="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100">
+                                <span class="font-bold text-indigo-950 block">4. 演讲稿 (Formal Speech)</span>
+                                <span class="text-slate-600">Audience greeting, rhetorical questions, persuasive call to action, formal closing.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Select High Level Vocabulary Character -->
+                    <div class="bg-amber-50/80 rounded-3xl p-5 border border-amber-200/80">
+                        <p class="text-xs font-bold text-amber-800 uppercase tracking-wider mb-2">
+                            Select Senior High-Level Character to Practice:
+                        </p>
+                        <div class="flex flex-wrap gap-2" id="character-selector">
+                            <button onclick="selectCharacter('提', 'tí - Raise / Advocate (提倡)')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">提</button>
+                            <button onclick="selectCharacter('倡', 'chàng - Initiative (倡议)')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">倡</button>
+                            <button onclick="selectCharacter('影', 'yǐng - Shadow / Influence (影响)')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">影</button>
+                            <button onclick="selectCharacter('响', 'xiǎng - Echo / Impact (响动)')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">响</button>
+                            <button onclick="selectCharacter('辩', 'biàn - Debate / Argument (辩论)')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">辩</button>
+                            <button onclick="selectCharacter('综', 'zōng - Synthesize (综合)')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">综</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Canvas Writing Studio -->
+                <div class="lg:w-1/2 w-full bg-white rounded-3xl p-6 border-2 border-indigo-200 shadow-xl flex flex-col items-center relative">
+                    
+                    <div class="w-full flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-slate-400 uppercase">Mi Zi Ge (米字格) Writing Pad</span>
+                            <h3 id="current-char-info" class="text-base font-bold text-slate-800">
+                                Active Character: <span class="text-indigo-800 font-chinese text-xl">提</span> (tí - Raise / Advocate)
+                            </h3>
+                        </div>
+                        <button onclick="clearCanvas()" class="px-3 py-1.5 bg-rose-50 text-chinaRed-700 border border-rose-200 rounded-xl text-xs font-bold hover:bg-chinaRed-700 hover:text-white transition flex items-center space-x-1">
+                            <i class="fas fa-eraser"></i>
+                            <span>Clear Pad</span>
+                        </button>
+                    </div>
+
+                    <!-- Canvas Container with Mi Zi Ge Lines -->
+                    <div class="relative w-full aspect-square max-w-[360px] sm:max-w-[400px] border-2 border-indigo-900 rounded-2xl bg-white overflow-hidden shadow-inner flex items-center justify-center">
+                        
+                        <!-- Diagonal & Axis Lines for Mi Zi Ge -->
+                        <div class="absolute inset-0 pointer-events-none">
+                            <svg class="w-full h-full stroke-rose-300/60" stroke-dasharray="4,4" stroke-width="1">
+                                <line x1="0" y1="0" x2="100%" y2="100%" />
+                                <line x1="100%" y1="0" x2="0" y2="100%" />
+                                <line x1="50%" y1="0" x2="50%" y2="100%" stroke-width="1.5" />
+                                <line x1="0" y1="50%" x2="100%" y2="50%" stroke-width="1.5" />
+                            </svg>
+                        </div>
+
+                        <div id="canvas-guide-overlay" class="absolute inset-0 flex items-center justify-center text-[180px] sm:text-[220px] font-chinese text-slate-200 select-none pointer-events-none transition-opacity duration-300 opacity-60">
+                            提
+                        </div>
+
+                        <canvas id="writing-canvas" class="relative z-10 w-full h-full cursor-crosshair touch-none" width="400" height="400"></canvas>
+                    </div>
+
+                    <!-- Writing Toolbar Controls -->
+                    <div class="w-full max-w-[360px] sm:max-w-[400px] mt-4 flex items-center justify-between gap-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-bold text-slate-500">Ink:</span>
+                            <button onclick="setPenColor('#1e1b4b')" class="w-7 h-7 rounded-full bg-indigo-950 border-2 border-white shadow-md focus:ring-2 focus:ring-offset-1 focus:ring-indigo-950"></button>
+                            <button onclick="setPenColor('#be123c')" class="w-7 h-7 rounded-full bg-chinaRed-700 border-2 border-white shadow-md focus:ring-2 focus:ring-offset-1 focus:ring-chinaRed-700"></button>
+                            <button onclick="setPenColor('#0d9488')" class="w-7 h-7 rounded-full bg-teal-600 border-2 border-white shadow-md focus:ring-2 focus:ring-offset-1 focus:ring-teal-600"></button>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-bold text-slate-500"><i class="fas fa-paint-brush"></i></span>
+                            <input type="range" id="brush-size" min="4" max="24" value="10" class="w-20 accent-indigo-900">
+                        </div>
+
+                        <button onclick="toggleGhostGuide()" class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-200">
+                            Toggle Trace
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Pillar 3: Listening & DP Academic Ear Trainer -->
+        <section id="listening" class="py-12 bg-indigo-950/5 border-y border-indigo-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <div class="inline-flex items-center space-x-2 text-indigo-800 font-bold text-xs uppercase tracking-wider bg-indigo-100 px-3 py-1 rounded-full">
+                        <i class="fas fa-headphones"></i>
+                        <span>Paper 2 Receptive Skills Trainer</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-black text-slate-900 font-chinese mt-2">
+                        听 (Tīng) • Senior Paper 2 Audio & Argument Analysis
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base mt-1">
+                        Senior Paper 2 audio texts include implicit meanings, nuanced idioms like "得不偿失", and global thematic arguments.
+                    </p>
+                </div>
+
+                <!-- DP Interactive Audio & Comprehension Quiz -->
+                <div id="tools" class="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden border border-slate-800">
+                    <div class="relative z-10 max-w-2xl mx-auto text-center space-y-6">
+                        
+                        <div class="inline-flex items-center space-x-2 bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 px-3 py-1 rounded-full text-xs font-bold">
+                            <i class="fas fa-brain"></i>
+                            <span>Senior Paper 2 Challenge</span>
+                        </div>
+
+                        <h3 class="text-2xl sm:text-3xl font-black font-chinese">
+                            🎧 Senior Audio Perspective Trainer
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-300">
+                            Listen to the audio statement delivered by Ms. Zhao's virtual assistant and analyze the speaker's core stance or theme!
+                        </p>
+
+                        <!-- Game Score Dashboard -->
+                        <div class="flex justify-center space-x-6 text-center bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
+                            <div>
+                                <p class="text-[10px] uppercase font-extrabold text-slate-400">Score</p>
+                                <p id="game-score" class="text-2xl font-black text-amber-400">0</p>
+                            </div>
+                            <div class="border-r border-slate-700"></div>
+                            <div>
+                                <p class="text-[10px] uppercase font-extrabold text-slate-400">Streak</p>
+                                <p id="game-streak" class="text-2xl font-black text-emerald-400">0 🔥</p>
+                            </div>
+                            <div class="border-r border-slate-700"></div>
+                            <div>
+                                <p class="text-[10px] uppercase font-extrabold text-slate-400">Round</p>
+                                <p id="game-round" class="text-2xl font-black text-indigo-400">1/4</p>
+                            </div>
+                        </div>
+
+                        <!-- Audio Play Trigger -->
+                        <div class="py-4">
+                            <button onclick="playDPQuizAudio()" class="px-6 py-4 bg-gradient-to-r from-indigo-700 to-chinaRed-700 hover:from-indigo-600 hover:to-chinaRed-600 text-white font-extrabold rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-3 mx-auto">
+                                <i class="fas fa-volume-up text-xl animate-pulse"></i>
+                                <span class="text-lg">Play Audio Prompt</span>
+                            </button>
+                            <p id="quiz-pinyin-display" class="mt-3 text-sm font-mono text-indigo-300 font-bold">
+                                Current Audio Prompt: <span id="target-phrase" class="text-amber-300 text-base font-chinese">Click play to listen</span>
+                            </p>
+                        </div>
+
+                        <!-- Answer Choice Buttons Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="quiz-options-container">
+                            <button onclick="submitDPGuess('Sharing the Planet')" class="dp-btn py-3 px-4 bg-slate-800 hover:bg-indigo-600/30 border border-slate-700 hover:border-indigo-500 rounded-xl font-bold text-xs text-slate-100 transition text-left">
+                                A) Sharing the Planet (得不偿失 / Env. vs. Econ)
+                            </button>
+                            <button onclick="submitDPGuess('Human Ingenuity')" class="dp-btn py-3 px-4 bg-slate-800 hover:bg-indigo-600/30 border border-slate-700 hover:border-indigo-500 rounded-xl font-bold text-xs text-slate-100 transition text-left">
+                                B) Human Ingenuity (AI & Society)
+                            </button>
+                            <button onclick="submitDPGuess('Identities')" class="dp-btn py-3 px-4 bg-slate-800 hover:bg-indigo-600/30 border border-slate-700 hover:border-indigo-500 rounded-xl font-bold text-xs text-slate-100 transition text-left">
+                                C) Identities (Cultural Inclusivity)
+                            </button>
+                            <button onclick="submitDPGuess('Social Organization')" class="dp-btn py-3 px-4 bg-slate-800 hover:bg-indigo-600/30 border border-slate-700 hover:border-indigo-500 rounded-xl font-bold text-xs text-slate-100 transition text-left">
+                                D) Social Organization (Educational Reform)
+                            </button>
+                        </div>
+
+                        <div id="game-feedback" class="h-8 text-sm font-bold flex items-center justify-center"></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Senior Readiness Checklist Section -->
+        <section id="readiness" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl space-y-6">
+                
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 text-teal-800 font-bold text-xs uppercase tracking-wider bg-teal-100 px-3 py-1 rounded-full">
+                            <i class="fas fa-check-double"></i>
+                            <span>Graduation Milestone Tracking</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 font-chinese mt-2">
+                            ✅ Senior Year IB DP Countdown Checklist
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                            Complete all graduation milestones to ensure full IB exam readiness!
+                        </p>
+                    </div>
+
+                    <div class="text-right">
+                        <span id="progress-text" class="text-2xl font-black text-teal-600 font-mono">0%</span>
+                        <p class="text-[10px] uppercase font-bold text-slate-400">Completed</p>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                    <div id="readiness-progress" class="bg-gradient-to-r from-teal-500 to-indigo-600 h-full w-0 transition-all duration-500"></div>
+                </div>
+
+                <!-- Checklist Items -->
+                <div class="space-y-3 pt-2">
+                    <label class="flex items-start space-x-3 p-3.5 bg-slate-50 hover:bg-indigo-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition">
+                        <input type="checkbox" onchange="updateSeniorProgress()" class="senior-check mt-1 w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 accent-indigo-600">
+                        <span class="text-xs sm:text-sm text-slate-700 font-medium">Confirmed Chinese Simplified Pinyin IME setup on Chromebook for digital exams.</span>
+                    </label>
+
+                    <label class="flex items-start space-x-3 p-3.5 bg-slate-50 hover:bg-indigo-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition">
+                        <input type="checkbox" onchange="updateSeniorProgress()" class="senior-check mt-1 w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 accent-indigo-600">
+                        <span class="text-xs sm:text-sm text-slate-700 font-medium">Scheduled Individual Oral (IO) practice recording session with Ms. Zhao.</span>
+                    </label>
+
+                    <label class="flex items-start space-x-3 p-3.5 bg-slate-50 hover:bg-indigo-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition">
+                        <input type="checkbox" onchange="updateSeniorProgress()" class="senior-check mt-1 w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 accent-indigo-600">
+                        <span class="text-xs sm:text-sm text-slate-700 font-medium">Reviewed past Paper 1 sample student scripts & IB Criterion A/B mark scheme criteria.</span>
+                    </label>
+
+                    <label class="flex items-start space-x-3 p-3.5 bg-slate-50 hover:bg-indigo-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition">
+                        <input type="checkbox" onchange="updateSeniorProgress()" class="senior-check mt-1 w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 accent-indigo-600">
+                        <span class="text-xs sm:text-sm text-slate-700 font-medium">Completed mock Paper 2 listening and reading practice exams with corrections.</span>
+                    </label>
+
+                    <label class="flex items-start space-x-3 p-3.5 bg-slate-50 hover:bg-indigo-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition">
+                        <input type="checkbox" onchange="updateSeniorProgress()" class="senior-check mt-1 w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 accent-indigo-600">
+                        <span class="text-xs sm:text-sm text-slate-700 font-medium">Set target IB predicted score goal (1–7) for university submissions.</span>
+                    </label>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Senior IB Scholar Badge Section -->
+        <section id="badge" class="py-12 bg-indigo-950/5 border-t border-indigo-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <div class="inline-flex items-center space-x-2 text-rose-800 font-bold text-xs uppercase tracking-wider bg-rose-100 px-3 py-1 rounded-full">
+                        <i class="fas fa-award"></i>
+                        <span>Diploma Program Recognition</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-black text-slate-900 font-chinese mt-2">
+                        🪪 Senior IB Scholar & Diploma Badge
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base mt-1">
+                        Generate your official 12th-grade IB Chinese candidate badge for senior year portfolios!
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
+                    
+                    <!-- Left: Input Controls -->
+                    <div class="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-lg space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Full Name (English)</label>
+                            <input type="text" id="sName" value="Maya Lin" oninput="renderBadge()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-600 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Chinese Name (中文名)</label>
+                            <input type="text" id="sZhName" value="林雅美" oninput="renderBadge()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm font-chinese focus:ring-2 focus:ring-indigo-600 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">IB DP Level</label>
+                            <select id="sTrack" onchange="renderBadge()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-600 outline-none bg-white">
+                                <option value="Language B Higher Level (HL)">Language B Higher Level (HL)</option>
+                                <option value="Language B Standard Level (SL)">Language B Standard Level (SL)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Target IB Score Goal</label>
+                            <select id="sTarget" onchange="renderBadge()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-600 outline-none bg-white">
+                                <option value="Target Score 7 (Exceptional Mastery)">Target Score 7 (Exceptional Mastery)</option>
+                                <option value="Target Score 6 (Superior Fluency)">Target Score 6 (Superior Fluency)</option>
+                                <option value="Target Score 5 (Strong Proficiency)">Target Score 5 (Strong Proficiency)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Right: Card Preview -->
+                    <div class="lg:col-span-6 flex justify-center">
+                        <div id="scholarBadge" class="w-full max-w-sm oriental-pattern text-white rounded-3xl p-6 sm:p-8 border-2 border-amber-300 shadow-2xl relative overflow-hidden text-center space-y-4">
+                            
+                            <div class="text-[10px] font-bold uppercase tracking-widest text-amber-300">
+                                JOSIAH QUINCY UPPER SCHOOL
+                            </div>
+                            
+                            <h4 class="text-sm font-extrabold uppercase tracking-wider text-white">
+                                SENIOR IB DP DIPLOMA SCHOLAR
+                            </h4>
+
+                            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 text-3xl shadow-lg border-2 border-white">
+                                🎓
+                            </div>
+
+                            <div>
+                                <h3 id="bZhName" class="text-2xl font-black font-chinese text-amber-300">林雅美</h3>
+                                <p id="bName" class="text-sm font-bold text-slate-100">Maya Lin</p>
+                            </div>
+
+                            <div class="border-t border-white/20 pt-3 text-xs space-y-1">
+                                <p>Level: <span id="bTrack" class="text-amber-300 font-bold">Language B HL</span></p>
+                                <p>Target: <span id="bTarget" class="text-emerald-400 font-bold">Score 7</span></p>
+                            </div>
+
+                            <div class="text-[10px] text-indigo-200 pt-2 border-t border-white/10">
+                                Instructor: Ms. Zhao • Class of 2026
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p>© Grade 12 IB DP Chinese Language B • Ms. Zhao • Josiah Quincy Upper School</p>
+            <p class="text-slate-500">Designed for intercultural understanding, diploma achievement & IB Academic Excellence.</p>
+        </div>
+    </footer>
+
+    <!-- Syllabus Modal -->
+    <div id="syllabus-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl border border-indigo-100 p-6 sm:p-8 relative">
+            <button onclick="closeSyllabusModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-xl w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="space-y-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-indigo-800 bg-indigo-100 px-3 py-1 rounded-full">Senior Course Syllabus</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-chinese mt-2">
+                        Grade 12 IB DP Chinese B Assessment Breakdown
+                    </h2>
+                    <p class="text-xs text-slate-500">Josiah Quincy Upper School • Instructor: Ms. Zhao</p>
+                </div>
+
+                <div class="border-t border-slate-100 pt-4 space-y-4 text-xs sm:text-sm text-slate-600">
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-1">📋 External & Internal Assessment Structure</h4>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>Paper 1 (25%):</strong> External Writing (250–400 words) using proper text formats (议论文, 建议书, 采访记, 演讲稿, etc.).</li>
+                            <li><strong>Paper 2 (50%):</strong> External Receptive Skills (Reading & Listening comprehension on global themes).</li>
+                            <li><strong>Individual Oral IA (25%):</strong> Internal Spoken Assessment based on visual stimulus + global theme discussion.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-1">🎯 Senior Graduation Expectations</h4>
+                        <p>High-level formal register, analytical precision, fluent transition structures, active participation in mock examinations, and consistent preparation for final IB DP May exams.</p>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-100 flex justify-end">
+                    <button onclick="closeSyllabusModal()" class="px-5 py-2.5 bg-slate-900 text-white font-bold rounded-xl text-xs hover:bg-indigo-800 transition">
+                        Got it, Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Audio Speech Synthesis Setup
+        let audioSpeed = 0.85;
+        function setAudioSpeed(speed) {
+            audioSpeed = speed;
+            document.getElementById('speed-slow').className = speed === 0.65 ? 'px-2 py-1 text-xs font-bold rounded-lg bg-emerald-600 text-white shadow-xs' : 'px-2 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-600 hover:bg-emerald-50';
+            document.getElementById('speed-normal').className = speed === 0.85 ? 'px-2 py-1 text-xs font-bold rounded-lg bg-emerald-600 text-white shadow-xs' : 'px-2 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-600 hover:bg-emerald-50';
+        }
+
+        function speakChinese(text, pinyin) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN';
+                utterance.rate = audioSpeed;
+                window.speechSynthesis.speak(utterance);
+                showToast(`Playing: "${text}" (${pinyin})`, 'info');
+            } else {
+                showToast('Speech synthesis not supported on this browser.', 'error');
+            }
+        }
+
+        // Email Copy Logic
+        function copyTeacherEmail() {
+            const email = document.getElementById('teacher-email').innerText;
+            navigator.clipboard.writeText(email).then(() => {
+                showToast('Teacher email copied to clipboard!', 'success');
+            });
+        }
+
+        // Toast Notification System
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const msgSpan = document.getElementById('toast-message');
+            const icon = document.getElementById('toast-icon');
+
+            msgSpan.innerText = message;
+            if (type === 'success') {
+                icon.className = 'fas fa-check-circle text-emerald-400 text-lg';
+            } else if (type === 'error') {
+                icon.className = 'fas fa-exclamation-circle text-rose-400 text-lg';
+            } else {
+                icon.className = 'fas fa-info-circle text-indigo-400 text-lg';
+            }
+
+            toast.classList.remove('translate-x-full');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3000);
+        }
+
+        // Canvas Drawing Engine
+        const canvas = document.getElementById('writing-canvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let penColor = '#1e1b4b';
+
+        function initCanvas() {
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = document.getElementById('brush-size').value;
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
+            canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+            canvas.addEventListener('touchend', stopDrawing);
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            ctx.beginPath();
+            const pos = getPos(e);
+            ctx.moveTo(pos.x, pos.y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const pos = getPos(e);
+            ctx.strokeStyle = penColor;
+            ctx.lineWidth = document.getElementById('brush-size').value;
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return {
+                x: ((e.clientX || (e.touches && e.touches[0].clientX)) - rect.left) * scaleX,
+                y: ((e.clientY || (e.touches && e.touches[0].clientY)) - rect.top) * scaleY
+            };
+        }
+
+        function handleTouchStart(e) {
+            e.preventDefault();
+            startDrawing(e.touches[0]);
+        }
+
+        function handleTouchMove(e) {
+            e.preventDefault();
+            draw(e.touches[0]);
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            showToast('Canvas cleared', 'info');
+        }
+
+        function setPenColor(color) {
+            penColor = color;
+        }
+
+        function selectCharacter(char, info) {
+            document.getElementById('canvas-guide-overlay').innerText = char;
+            document.getElementById('current-char-info').innerHTML = `Active Character: <span class="text-indigo-800 font-chinese text-xl">${char}</span> (${info})`;
+            clearCanvas();
+        }
+
+        function toggleGhostGuide() {
+            const overlay = document.getElementById('canvas-guide-overlay');
+            overlay.classList.toggle('opacity-0');
+        }
+
+        // Syllabus Modal Toggle
+        function openSyllabusModal() {
+            const modal = document.getElementById('syllabus-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+
+        function closeSyllabusModal() {
+            const modal = document.getElementById('syllabus-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        // Senior Quiz Engine Logic
+        const seniorDPQuestions = [
+            { phrase: '发展经济固然重要，但如果以牺牲环境为代价，那就得不偿失了。', answer: 'Sharing the Planet' },
+            { phrase: '人工智能技术的发展不仅重塑了工作方式，也提出了深刻的伦理问题。', answer: 'Human Ingenuity' },
+            { phrase: '高中生在多元文化背景下应当保持开放包容的心态和批判性思维。', answer: 'Identities' },
+            { phrase: '教育改革的根本目的在于促进社会公平并构建包容性社区。', answer: 'Social Organization' }
+        ];
+
+        let currentQuizIdx = 0;
+        let score = 0;
+        let streak = 0;
+
+        function playDPQuizAudio() {
+            const item = seniorDPQuestions[currentQuizIdx];
+            document.getElementById('target-phrase').innerText = `"${item.phrase}"`;
+            speakChinese(item.phrase, 'Senior Listening Practice');
+        }
+
+        function submitDPGuess(guess) {
+            const current = seniorDPQuestions[currentQuizIdx];
+            const feedback = document.getElementById('game-feedback');
+
+            if (guess === current.answer) {
+                score += 100;
+                streak += 1;
+                feedback.innerHTML = `<span class="text-emerald-400"> Correct! Excellent Senior Analysis.</span>`;
+                confetti({ particleCount: 50, spread: 60, origin: { y: 0.8 } });
+            } else {
+                streak = 0;
+                feedback.innerHTML = `<span class="text-rose-400"> Incorrect. Theme was: ${current.answer}</span>`;
+            }
+
+            document.getElementById('game-score').innerText = score;
+            document.getElementById('game-streak').innerText = `${streak} 🔥`;
+
+            currentQuizIdx = (currentQuizIdx + 1) % seniorDPQuestions.length;
+            document.getElementById('game-round').innerText = `${currentQuizIdx + 1}/4`;
+        }
+
+        // Senior Progress Bar Logic
+        function updateSeniorProgress() {
+            const checkboxes = document.querySelectorAll('.senior-check');
+            let checkedCount = 0;
+            checkboxes.forEach(cb => { if (cb.checked) checkedCount++; });
+            const percentage = Math.round((checkedCount / checkboxes.length) * 100);
+            
+            document.getElementById('readiness-progress').style.width = percentage + '%';
+            document.getElementById('progress-text').innerText = percentage + '%';
+
+            if (percentage === 100) {
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                showToast('Congratulations! Senior Readiness 100% Complete!', 'success');
+            }
+        }
+
+        // Badge Renderer Logic
+        function renderBadge() {
+            document.getElementById('bName').textContent = document.getElementById('sName').value || "Student Name";
+            document.getElementById('bZhName').textContent = document.getElementById('sZhName').value || "中文名";
+            document.getElementById('bTrack').textContent = document.getElementById('sTrack').value;
+            document.getElementById('bTarget').textContent = document.getElementById('sTarget').value;
+        }
+
+        // Initialize Canvas & Page State on Load
+        window.onload = function() {
+            initCanvas();
+            renderBadge();
+        };
+    </script>
+</body>
+</html>
