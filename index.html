@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to 7th Grade Chinese | Ms. Zhao - JQUS</title>
+    <title>Ms. Zhao's Chinese Class Hub | JQUS</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,7 +44,7 @@
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Canvas Confetti Library -->
@@ -62,15 +61,6 @@
             font-family: 'Noto Serif SC', serif;
         }
 
-        /* Tian Zi Ge Pattern (Chinese Character Canvas Grid) */
-        .tianzige-bg {
-            background-image: 
-                linear-gradient(to right, rgba(225, 29, 72, 0.15) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(225, 29, 72, 0.15) 1px, transparent 1px);
-            background-size: 100% 100%;
-        }
-
-        /* Subtle oriental geometric pattern header */
         .oriental-pattern {
             background-color: #be123c;
             background-image: radial-gradient(#fbbf24 0.75px, transparent 0.75px), radial-gradient(#fbbf24 0.75px, #be123c 0.75px);
@@ -85,7 +75,6 @@
             border: 1px solid rgba(229, 231, 235, 0.8);
         }
 
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -96,875 +85,272 @@
             background: #be123c;
             border-radius: 4px;
         }
-
-        @media print {
-            .no-print { display: none !important; }
-            .print-only { display: block !important; }
-            body { background: white; color: black; }
-        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-chinaRed-100 selection:text-chinaRed-800">
 
-    <!-- Toast Notification Container -->
+    <!-- Toast Notification -->
     <div id="toast" class="fixed top-20 right-5 z-50 transform translate-x-full transition-transform duration-300 ease-in-out bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 pointer-events-none">
         <i id="toast-icon" class="fas fa-check-circle text-emerald-400 text-lg"></i>
         <span id="toast-message" class="text-sm font-medium">Notification message</span>
     </div>
 
-    <!-- Sticky Header Navigation -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-rose-100 shadow-sm no-print">
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-rose-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-20">
                 
-                <!-- School & Class Badge -->
+                <!-- School & Teacher Brand -->
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-chinaRed-700 to-rose-500 flex items-center justify-center text-white font-bold text-xl shadow-md border-2 border-amber-300">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-chinaRed-700 to-rose-500 flex items-center justify-center text-white font-bold text-xl shadow-md border-2 border-amber-300 font-chinese">
                         中文
                     </div>
                     <div>
                         <div class="flex items-center space-x-2">
-                            <span class="text-xs font-bold uppercase tracking-wider bg-rose-100 text-chinaRed-800 px-2 py-0.5 rounded-md">7th Grade</span>
+                            <span class="text-xs font-bold uppercase tracking-wider bg-rose-100 text-chinaRed-800 px-2 py-0.5 rounded-md">Course Portal</span>
                             <span class="text-xs font-semibold text-slate-500 hidden sm:inline">JQUS • Boston Public Schools</span>
                         </div>
                         <h1 class="text-lg sm:text-xl font-extrabold text-slate-900 font-chinese tracking-tight">
-                            中文课 Day 1 • Ms. Zhao
+                            中文课 Hub • Ms. Zhao
                         </h1>
                     </div>
                 </div>
 
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-semibold text-slate-600">
-                    <a href="#welcome" class="px-3 py-2 rounded-lg hover:text-chinaRed-700 hover:bg-rose-50 transition">
-                        <i class="fas fa-chalkboard-user mr-1 text-chinaRed-600"></i> Welcome
-                    </a>
-                    <a href="#pillars" class="px-3 py-2 rounded-lg hover:text-chinaRed-700 hover:bg-rose-50 transition">
-                        <i class="fas fa-compass mr-1 text-amber-500"></i> How To Learn
-                    </a>
-                    <a href="#speaking" class="px-3 py-2 rounded-lg hover:text-chinaRed-700 hover:bg-rose-50 transition">
-                        <i class="fas fa-comments mr-1 text-emerald-600"></i> Speak (说)
-                    </a>
-                    <a href="#writing" class="px-3 py-2 rounded-lg hover:text-chinaRed-700 hover:bg-rose-50 transition">
-                        <i class="fas fa-pen-nib mr-1 text-blue-600"></i> Write (写)
-                    </a>
-                    <a href="#listening" class="px-3 py-2 rounded-lg hover:text-chinaRed-700 hover:bg-rose-50 transition">
-                        <i class="fas fa-headphones mr-1 text-purple-600"></i> Tones (听)
-                    </a>
-                    <a href="#tools" class="px-3 py-2 rounded-lg hover:text-chinaRed-700 hover:bg-rose-50 transition">
-                        <i class="fas fa-gamepad mr-1 text-rose-600"></i> Practice Games
-                    </a>
-                </nav>
-
                 <!-- Action CTA -->
                 <div class="flex items-center space-x-2">
-                    <button onclick="openSyllabusModal()" class="px-3 sm:px-4 py-2 bg-slate-900 text-white rounded-xl text-xs sm:text-sm font-semibold hover:bg-chinaRed-800 transition shadow-sm flex items-center space-x-1.5">
-                        <i class="fas fa-file-invoice"></i>
-                        <span>Syllabus</span>
+                    <button onclick="copyTeacherEmail()" class="px-3 sm:px-4 py-2 bg-slate-900 text-white rounded-xl text-xs sm:text-sm font-semibold hover:bg-chinaRed-800 transition shadow-sm flex items-center space-x-1.5">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Teacher</span>
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Area -->
+    <!-- Main Content -->
     <main class="flex-grow">
 
-        <!-- Hero & Welcome Section -->
-        <section id="welcome" class="relative overflow-hidden oriental-pattern text-white py-12 sm:py-20 px-4 sm:px-6 lg:px-8 shadow-inner">
-            <div class="max-w-7xl mx-auto relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    
-                    <!-- Left: Hero Text -->
-                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                        <div class="inline-flex items-center space-x-2 bg-amber-400/20 backdrop-blur-md border border-amber-300/40 text-amber-200 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium">
-                            <i class="fas fa-sparkles text-amber-300"></i>
-                            <span>Josiah Quincy Upper School • Grade 7 Mandarin</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black font-chinese leading-tight tracking-tight text-white drop-shadow-md">
-                            欢迎来到中文课! <br>
-                            <span class="text-amber-300 text-2xl sm:text-4xl lg:text-5xl font-sans font-extrabold block mt-2">
-                                Welcome to 7th Grade Chinese!
-                            </span>
-                        </h2>
-                        <p class="text-rose-100 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-                            Today marks Day 1 of our exciting journey into Mandarin Chinese. Learning Chinese is not about memorizing endless symbols—it's an interactive adventure through **Speaking, Writing, Listening, and Reading!**
-                        </p>
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden oriental-pattern text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 shadow-inner">
+            <div class="max-w-7xl mx-auto relative z-10 text-center">
+                <div class="inline-flex items-center space-x-2 bg-amber-400/20 backdrop-blur-md border border-amber-300/40 text-amber-200 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4">
+                    <i class="fas fa-school text-amber-300"></i>
+                    <span>Josiah Quincy Upper School • Grades 7–12 Mandarin Chinese</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black font-chinese leading-tight tracking-tight text-white drop-shadow-md">
+                    欢迎来到中文课学习中心! <br>
+                    <span class="text-amber-300 text-2xl sm:text-4xl lg:text-5xl font-sans font-extrabold block mt-2">
+                        Welcome to Ms. Zhao's Chinese Portal
+                    </span>
+                </h2>
+                <p class="text-rose-100 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed mt-4">
+                    Select your grade level below to access interactive lessons, stroke writing pads, tone trainers, and class resources.
+                </p>
 
-                        <!-- Call to Action Buttons -->
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
-                            <a href="#speaking" class="px-5 py-3 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center space-x-2">
-                                <i class="fas fa-play-circle text-lg"></i>
-                                <span>Start Day 1 Practice</span>
-                            </a>
-                            <a href="#passport" class="px-5 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/30 rounded-xl font-semibold text-sm backdrop-blur-sm transition flex items-center space-x-2">
-                                <i class="fas fa-id-card"></i>
-                                <span>Create Student Passport</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Right: Teacher Intro Card -->
-                    <div class="lg:col-span-5">
-                        <div class="glass-card rounded-3xl p-6 sm:p-8 text-slate-800 shadow-2xl relative border-2 border-amber-200/50">
-                            <!-- Teacher Profile Header -->
-                            <div class="flex items-center space-x-4 mb-5">
-                                <div class="relative">
-                                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-chinaRed-800 to-rose-600 flex items-center justify-center text-amber-300 font-chinese font-bold text-3xl sm:text-4xl shadow-md border-2 border-amber-300">
-                                        赵
-                                    </div>
-                                    <span class="absolute -bottom-1 -right-1 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-white shadow-sm">Online</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl sm:text-2xl font-black text-slate-900 font-chinese">
-                                        Ms. Zhao <span class="text-chinaRed-700 font-normal text-lg">(赵老师)</span>
-                                    </h3>
-                                    <p class="text-xs sm:text-sm font-semibold text-slate-500">
-                                        7th Grade Mandarin Chinese Teacher
-                                    </p>
-                                    <div class="mt-1 flex items-center text-xs font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md inline-block">
-                                        <i class="fas fa-school mr-1 text-amber-600"></i> Josiah Quincy Upper School (JQUS)
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Bio & Message -->
-                            <div class="space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-b border-rose-100 py-4 my-4">
-                                <p>
-                                    <strong class="text-slate-900 font-semibold">Nǐ hǎo (你好)!</strong> Welcome to 7th grade! I am so thrilled to guide you on your Chinese learning journey this year at JQUS.
-                                </p>
-                                <p>
-                                    In our classroom, we practice **courage over perfection**. You will make mistakes, speak with funny tones, and write squiggly lines—and that means you are learning!
-                                </p>
-                            </div>
-
-                            <!-- Contact Card with Copy Email -->
-                            <div class="bg-rose-50/70 rounded-2xl p-3.5 border border-rose-100 flex items-center justify-between">
-                                <div class="flex items-center space-x-3 overflow-hidden">
-                                    <div class="w-9 h-9 rounded-xl bg-chinaRed-600 text-white flex items-center justify-center text-sm shrink-0">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <div class="truncate">
-                                        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Teacher Email</p>
-                                        <p id="teacher-email" class="text-xs sm:text-sm font-mono font-bold text-slate-800 truncate">
-                                            yzhao@bostonpublicschools.org
-                                        </p>
-                                    </div>
-                                </div>
-                                <button onclick="copyTeacherEmail()" class="shrink-0 ml-2 px-3 py-1.5 bg-white text-chinaRed-700 border border-rose-200 rounded-lg text-xs font-bold hover:bg-chinaRed-700 hover:text-white transition shadow-xs flex items-center space-x-1" title="Copy Email">
-                                    <i class="fas fa-copy"></i>
-                                    <span class="hidden sm:inline">Copy</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
+                <!-- Audio Greeting Button -->
+                <div class="mt-6">
+                    <button onclick="speakChinese('欢迎来到中文课', 'Huānyíng lái dào zhōngwén kè')" class="px-5 py-3 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl font-bold text-sm shadow-lg transition transform hover:scale-105 inline-flex items-center space-x-2">
+                        <i class="fas fa-volume-high text-lg"></i>
+                        <span>Listen to Welcome Greeting</span>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Core Pillars Overview Section -->
-        <section id="pillars" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
+        <!-- Course Cards Selection Section -->
+        <section class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
                 <span class="text-xs font-extrabold uppercase tracking-widest text-chinaRed-700 bg-rose-100 px-3 py-1 rounded-full">
-                    Day 1 Roadmap
+                    Select Your Class
                 </span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-chinese mt-3">
-                    How We Learn Chinese in 7th Grade
-                </h2>
-                <p class="text-slate-600 mt-2 text-sm sm:text-base">
-                    Mastering Mandarin requires combining 4 key superpowers. Click on any pillar to start exploring!
-                </p>
+                <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-chinese mt-3">
+                    Grade Level Classrooms
+                </h3>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Pillar 1: Speaking -->
-                <a href="#speaking" class="group bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-300 transition duration-300 flex flex-col justify-between">
+                <!-- 7th Grade Card -->
+                <a href="7thgrade.html" onclick="triggerConfetti()" class="group bg-white rounded-3xl p-6 border-2 border-rose-200 shadow-md hover:shadow-2xl hover:border-chinaRed-600 transition duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-chinaRed-700 text-amber-300 px-4 py-1 rounded-bl-2xl font-bold text-xs">
+                        Grade 7
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-rose-100 text-chinaRed-700 flex items-center justify-center text-2xl font-bold font-chinese mb-4 group-hover:scale-110 transition transform">
+                            七
+                        </div>
+                        <h4 class="text-xl font-black text-slate-900 font-chinese">
+                            7th Grade Chinese
+                        </h4>
+                        <p class="text-xs font-semibold text-chinaRed-700 mt-1 uppercase tracking-wider">
+                            七年级中文课 • Foundations
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3">
+                            Master the 4 Tones, basic character stroke orders with the Tian Zi Ge writing canvas, daily classroom greetings, and passports!
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-bold text-xs text-chinaRed-700 group-hover:translate-x-1 transition">
+                        <span>Enter 7th Grade</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- 8th Grade Card -->
+                <a href="8thgrade.html" onclick="triggerConfetti()" class="group bg-white rounded-3xl p-6 border-2 border-emerald-200 shadow-md hover:shadow-2xl hover:border-emerald-600 transition duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-emerald-700 text-amber-300 px-4 py-1 rounded-bl-2xl font-bold text-xs">
+                        Grade 8
+                    </div>
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl font-bold font-chinese mb-4 group-hover:scale-110 transition transform">
-                            说
+                            八
                         </div>
-                        <div class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Pillar 01</div>
-                        <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2 font-chinese">Speaking (Shuō)</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Practice tones aloud with courage! Use your vocal pitch to master everyday classroom greetings.
+                        <h4 class="text-xl font-black text-slate-900 font-chinese">
+                            8th Grade Chinese
+                        </h4>
+                        <p class="text-xs font-semibold text-emerald-700 mt-1 uppercase tracking-wider">
+                            八年级中文课 • Intermediate I
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3">
+                            Expand conversational fluency, explore advanced character radicals, practice multi-sentence dialogues, and refine listening accuracy.
                         </p>
                     </div>
-                    <div class="mt-6 flex items-center text-xs font-bold text-emerald-700 group-hover:translate-x-1 transition">
-                        <span>Try Audio Pronunciation</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-bold text-xs text-emerald-700 group-hover:translate-x-1 transition">
+                        <span>Enter 8th Grade</span>
+                        <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
 
-                <!-- Pillar 2: Writing -->
-                <a href="#writing" class="group bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-300 transition duration-300 flex flex-col justify-between">
+                <!-- 9th Grade Card -->
+                <a href="9thgrade.html" onclick="triggerConfetti()" class="group bg-white rounded-3xl p-6 border-2 border-blue-200 shadow-md hover:shadow-2xl hover:border-blue-600 transition duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-blue-700 text-amber-300 px-4 py-1 rounded-bl-2xl font-bold text-xs">
+                        Grade 9
+                    </div>
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-2xl font-bold font-chinese mb-4 group-hover:scale-110 transition transform">
-                            写
+                            九
                         </div>
-                        <div class="text-xs font-bold text-blue-600 uppercase tracking-wider">Pillar 02</div>
-                        <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2 font-chinese">Writing (Xiě)</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Treat characters like building blocks. Learn basic stroke rules on our interactive Tian Zi Ge canvas!
+                        <h4 class="text-xl font-black text-slate-900 font-chinese">
+                            9th Grade Chinese
+                        </h4>
+                        <p class="text-xs font-semibold text-blue-700 mt-1 uppercase tracking-wider">
+                            九年级中文课 • Intermediate II
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3">
+                            Build paragraph-level expression, master school life and routine vocabulary, and practice essay writing structures.
                         </p>
                     </div>
-                    <div class="mt-6 flex items-center text-xs font-bold text-blue-700 group-hover:translate-x-1 transition">
-                        <span>Open Canvas Pad</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-bold text-xs text-blue-700 group-hover:translate-x-1 transition">
+                        <span>Enter 9th Grade</span>
+                        <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
 
-                <!-- Pillar 3: Listening -->
-                <a href="#listening" class="group bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-purple-300 transition duration-300 flex flex-col justify-between">
+                <!-- 10th Grade Card -->
+                <a href="10thgrade.html" onclick="triggerConfetti()" class="group bg-white rounded-3xl p-6 border-2 border-purple-200 shadow-md hover:shadow-2xl hover:border-purple-600 transition duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-purple-700 text-amber-300 px-4 py-1 rounded-bl-2xl font-bold text-xs">
+                        Grade 10
+                    </div>
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl font-bold font-chinese mb-4 group-hover:scale-110 transition transform">
-                            听
+                            十
                         </div>
-                        <div class="text-xs font-bold text-purple-600 uppercase tracking-wider">Pillar 03</div>
-                        <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2 font-chinese">Listening (Tīng)</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Train your ear to recognize the 4 Tones. Pitch changes completely alter word meanings!
+                        <h4 class="text-xl font-black text-slate-900 font-chinese">
+                            10th Grade Chinese
+                        </h4>
+                        <p class="text-xs font-semibold text-purple-700 mt-1 uppercase tracking-wider">
+                            十年级中文课 • Upper Intermediate
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3">
+                            Focus on real-world topics, cultural heritage units, travel scenarios, and complex grammar sentence connectors.
                         </p>
                     </div>
-                    <div class="mt-6 flex items-center text-xs font-bold text-purple-700 group-hover:translate-x-1 transition">
-                        <span>Test Tone Hearing</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-bold text-xs text-purple-700 group-hover:translate-x-1 transition">
+                        <span>Enter 10th Grade</span>
+                        <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
 
-                <!-- Pillar 4: Reading & Culture -->
-                <a href="#reading" class="group bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-300 transition duration-300 flex flex-col justify-between">
+                <!-- 11th Grade Card -->
+                <a href="11thgrade.html" onclick="triggerConfetti()" class="group bg-white rounded-3xl p-6 border-2 border-amber-200 shadow-md hover:shadow-2xl hover:border-amber-600 transition duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-amber-600 text-slate-900 px-4 py-1 rounded-bl-2xl font-bold text-xs">
+                        Grade 11
+                    </div>
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl font-bold font-chinese mb-4 group-hover:scale-110 transition transform">
-                            读
+                            十一
                         </div>
-                        <div class="text-xs font-bold text-amber-600 uppercase tracking-wider">Pillar 04</div>
-                        <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2 font-chinese">Reading & Culture</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Decode Pinyin vs Characters and explore character radicals to unlock 3,000 years of Chinese culture.
+                        <h4 class="text-xl font-black text-slate-900 font-chinese">
+                            11th Grade Chinese
+                        </h4>
+                        <p class="text-xs font-semibold text-amber-700 mt-1 uppercase tracking-wider">
+                            十一年级中文课 • Advanced Prep
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3">
+                            Analyze contemporary articles, practice formal debate expressions, and prepare for advanced language assessments.
                         </p>
                     </div>
-                    <div class="mt-6 flex items-center text-xs font-bold text-amber-700 group-hover:translate-x-1 transition">
-                        <span>Explore Radicals</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-bold text-xs text-amber-700 group-hover:translate-x-1 transition">
+                        <span>Enter 11th Grade</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- 12th Grade Card -->
+                <a href="12thgrade.html" onclick="triggerConfetti()" class="group bg-white rounded-3xl p-6 border-2 border-rose-300 shadow-md hover:shadow-2xl hover:border-chinaRed-800 transition duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-slate-900 text-amber-300 px-4 py-1 rounded-bl-2xl font-bold text-xs">
+                        Grade 12
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-rose-200 text-chinaRed-900 flex items-center justify-center text-2xl font-bold font-chinese mb-4 group-hover:scale-110 transition transform">
+                            十二
+                        </div>
+                        <h4 class="text-xl font-black text-slate-900 font-chinese">
+                            12th Grade Chinese
+                        </h4>
+                        <p class="text-xs font-semibold text-chinaRed-900 mt-1 uppercase tracking-wider">
+                            十二年级中文课 • Capstone & Mastery
+                        </p>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3">
+                            Senior capstone projects, advanced literary readings, authentic media analysis, and college-level fluency refinement.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-bold text-xs text-chinaRed-900 group-hover:translate-x-1 transition">
+                        <span>Enter 12th Grade</span>
+                        <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
 
             </div>
         </section>
 
-        <!-- Pillar 1: Speaking (说 - Shuō) -->
-        <section id="speaking" class="py-12 bg-emerald-950/5 border-y border-emerald-100">
+        <!-- Teacher Information Section -->
+        <section class="py-12 bg-slate-900 text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Section Header -->
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                    <div>
-                        <div class="inline-flex items-center space-x-2 text-emerald-700 font-bold text-xs uppercase tracking-wider bg-emerald-100 px-3 py-1 rounded-full">
-                            <i class="fas fa-volume-high"></i>
-                            <span>Pillar 1: Learn By Speaking</span>
+                <div class="glass-card bg-slate-800/90 rounded-3xl p-6 sm:p-10 border border-slate-700 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center space-x-5">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-chinaRed-800 to-rose-600 flex items-center justify-center text-amber-300 font-chinese font-bold text-3xl sm:text-4xl shadow-md border-2 border-amber-300 shrink-0">
+                            赵
                         </div>
-                        <h2 class="text-2xl sm:text-4xl font-black text-slate-900 font-chinese mt-2">
-                            说 (Shuō) • Daily Classroom Phrases
-                        </h2>
-                        <p class="text-slate-600 text-sm sm:text-base mt-1">
-                            Click any card to hear authentic Mandarin audio via native browser speech synthesis!
-                        </p>
-                    </div>
-
-                    <!-- Speech Rate Control -->
-                    <div class="bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-xs flex items-center space-x-3 self-start md:self-auto">
-                        <span class="text-xs font-bold text-slate-600"><i class="fas fa-gauge-high text-emerald-600 mr-1"></i> Audio Speed:</span>
-                        <button onclick="setAudioSpeed(0.65)" id="speed-slow" class="px-2 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-600 hover:bg-emerald-50">Slow</button>
-                        <button onclick="setAudioSpeed(0.9)" id="speed-normal" class="px-2 py-1 text-xs font-bold rounded-lg bg-emerald-600 text-white shadow-xs">Normal</button>
-                    </div>
-                </div>
-
-                <!-- Phrases Interactive Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    
-                    <!-- Phrase 1 -->
-                    <div onclick="speakChinese('你好', 'Nǐ hǎo')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
-                        <div class="flex justify-between items-start">
-                            <span class="text-3xl sm:text-4xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">你好</span>
-                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
-                                <i class="fas fa-volume-high"></i>
-                            </button>
-                        </div>
-                        <p class="text-sm font-semibold text-emerald-600 mt-2">Nǐ hǎo</p>
-                        <p class="text-xs text-slate-500 mt-0.5">Hello!</p>
-                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
-                            💡 Tip: Both words are 3rd tone, but "Nǐ" changes to 2nd tone when spoken!
-                        </div>
-                    </div>
-
-                    <!-- Phrase 2 -->
-                    <div onclick="speakChinese('老师好', 'Lǎoshī hǎo')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
-                        <div class="flex justify-between items-start">
-                            <span class="text-3xl sm:text-4xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">老师好</span>
-                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
-                                <i class="fas fa-volume-high"></i>
-                            </button>
-                        </div>
-                        <p class="text-sm font-semibold text-emerald-600 mt-2">Lǎoshī hǎo</p>
-                        <p class="text-xs text-slate-500 mt-0.5">Hello Teacher! (Ms. Zhao)</p>
-                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
-                            💡 Always say this when entering Ms. Zhao's room!
-                        </div>
-                    </div>
-
-                    <!-- Phrase 3 -->
-                    <div onclick="speakChinese('谢谢', 'Xièxie')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
-                        <div class="flex justify-between items-start">
-                            <span class="text-3xl sm:text-4xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">谢谢</span>
-                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
-                                <i class="fas fa-volume-high"></i>
-                            </button>
-                        </div>
-                        <p class="text-sm font-semibold text-emerald-600 mt-2">Xièxie</p>
-                        <p class="text-xs text-slate-500 mt-0.5">Thank you</p>
-                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
-                            💡 First "Xiè" is 4th tone (falling), second is light/neutral tone.
-                        </div>
-                    </div>
-
-                    <!-- Phrase 4 -->
-                    <div onclick="speakChinese('不客气', 'Bú kèqi')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
-                        <div class="flex justify-between items-start">
-                            <span class="text-3xl sm:text-4xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">不客气</span>
-                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
-                                <i class="fas fa-volume-high"></i>
-                            </button>
-                        </div>
-                        <p class="text-sm font-semibold text-emerald-600 mt-2">Bú kèqi</p>
-                        <p class="text-xs text-slate-500 mt-0.5">You're welcome!</p>
-                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
-                            💡 Literally translates to "Don't be polite!"
-                        </div>
-                    </div>
-
-                    <!-- Phrase 5 -->
-                    <div onclick="speakChinese('再见', 'Zàijiàn')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
-                        <div class="flex justify-between items-start">
-                            <span class="text-3xl sm:text-4xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">再见</span>
-                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
-                                <i class="fas fa-volume-high"></i>
-                            </button>
-                        </div>
-                        <p class="text-sm font-semibold text-emerald-600 mt-2">Zàijiàn</p>
-                        <p class="text-xs text-slate-500 mt-0.5">Goodbye / See you again!</p>
-                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
-                            💡 Both syllables use 4th tone (sharp falling tone).
-                        </div>
-                    </div>
-
-                    <!-- Phrase 6 -->
-                    <div onclick="speakChinese('同学们好', 'Tóngxuémen hǎo')" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 cursor-pointer transition transform hover:-translate-y-1 relative group">
-                        <div class="flex justify-between items-start">
-                            <span class="text-3xl sm:text-4xl font-bold font-chinese text-slate-900 group-hover:text-emerald-700 transition">同学们好</span>
-                            <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center transition">
-                                <i class="fas fa-volume-high"></i>
-                            </button>
-                        </div>
-                        <p class="text-sm font-semibold text-emerald-600 mt-2">Tóngxuémen hǎo</p>
-                        <p class="text-xs text-slate-500 mt-0.5">Hello classmates!</p>
-                        <div class="mt-3 text-[11px] bg-slate-50 text-slate-600 p-2 rounded-lg font-mono">
-                            💡 Ms. Zhao uses this to greet the whole class!
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Pillar 2: Writing (写 - Xiě) -->
-        <section id="writing" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row gap-8 items-start">
-                
-                <!-- Left: Writing Rules & Guidance -->
-                <div class="lg:w-1/2 space-y-6">
-                    <div>
-                        <div class="inline-flex items-center space-x-2 text-blue-700 font-bold text-xs uppercase tracking-wider bg-blue-100 px-3 py-1 rounded-full">
-                            <i class="fas fa-pen-nib"></i>
-                            <span>Pillar 2: Learn By Writing</span>
-                        </div>
-                        <h2 class="text-2xl sm:text-4xl font-black text-slate-900 font-chinese mt-2">
-                            写 (Xiě) • Stroke Rules & Tian Zi Ge Pad
-                        </h2>
-                        <p class="text-slate-600 text-sm sm:text-base mt-2">
-                            Chinese characters are constructed following universal stroke order rules. Following these rules makes writing faster and more beautiful!
-                        </p>
-                    </div>
-
-                    <!-- Stroke Order Rules Checklist Card -->
-                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
-                        <h3 class="text-base font-bold text-slate-900 flex items-center space-x-2">
-                            <i class="fas fa-list-ol text-blue-600"></i>
-                            <span>Golden Rules of Character Writing</span>
-                        </h3>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                            <div class="p-3 bg-blue-50/60 rounded-xl border border-blue-100">
-                                <span class="font-bold text-blue-900 block">1. Top to Bottom (从上到下)</span>
-                                <span class="text-slate-600">e.g., 三 (sān - three)</span>
-                            </div>
-                            <div class="p-3 bg-blue-50/60 rounded-xl border border-blue-100">
-                                <span class="font-bold text-blue-900 block">2. Left to Right (从左到右)</span>
-                                <span class="text-slate-600">e.g., 川 (chuān - river)</span>
-                            </div>
-                            <div class="p-3 bg-blue-50/60 rounded-xl border border-blue-100">
-                                <span class="font-bold text-blue-900 block">3. Horizontal then Vertical</span>
-                                <span class="text-slate-600">e.g., 十 (shí - ten)</span>
-                            </div>
-                            <div class="p-3 bg-blue-50/60 rounded-xl border border-blue-100">
-                                <span class="font-bold text-blue-900 block">4. Outside then Inside</span>
-                                <span class="text-slate-600">e.g., 月 (yuè - moon)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Preset Character Quick Buttons -->
-                    <div class="bg-amber-50/80 rounded-3xl p-5 border border-amber-200/80">
-                        <p class="text-xs font-bold text-amber-800 uppercase tracking-wider mb-2">
-                            Select Template Character to Trace:
-                        </p>
-                        <div class="flex flex-wrap gap-2" id="character-selector">
-                            <button onclick="selectCharacter('一', 'yī - One')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">一</button>
-                            <button onclick="selectCharacter('二', 'èr - Two')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">二</button>
-                            <button onclick="selectCharacter('三', 'sān - Three')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">三</button>
-                            <button onclick="selectCharacter('人', 'rén - Person')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">人</button>
-                            <button onclick="selectCharacter('大', 'dà - Big')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">大</button>
-                            <button onclick="selectCharacter('中', 'zhōng - Middle')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">中</button>
-                            <button onclick="selectCharacter('文', 'wén - Culture')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">文</button>
-                            <button onclick="selectCharacter('福', 'fú - Fortune')" class="char-btn px-3.5 py-2 bg-white border border-amber-300 rounded-xl text-lg font-chinese font-bold text-slate-800 hover:bg-amber-400 transition shadow-xs">福</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: HTML5 Canvas Writing Studio -->
-                <div class="lg:w-1/2 w-full bg-white rounded-3xl p-6 border-2 border-rose-200 shadow-xl flex flex-col items-center relative">
-                    
-                    <div class="w-full flex items-center justify-between mb-4">
                         <div>
-                            <span class="text-xs font-bold text-slate-400 uppercase">Tian Zi Ge Pad</span>
-                            <h3 id="current-char-info" class="text-base font-bold text-slate-800">
-                                Active Guide: <span class="text-chinaRed-700 font-chinese text-xl">一</span> (yī - One)
+                            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Course Instructor</span>
+                            <h3 class="text-xl sm:text-2xl font-black text-white font-chinese">
+                                Ms. Zhao (赵老师)
                             </h3>
-                        </div>
-                        <button onclick="clearCanvas()" class="px-3 py-1.5 bg-rose-50 text-chinaRed-700 border border-rose-200 rounded-xl text-xs font-bold hover:bg-chinaRed-700 hover:text-white transition flex items-center space-x-1">
-                            <i class="fas fa-eraser"></i>
-                            <span>Clear Pad</span>
-                        </button>
-                    </div>
-
-                    <!-- Canvas Container with Grid Backdrop -->
-                    <div class="relative w-full aspect-square max-w-[360px] sm:max-w-[400px] border-2 border-chinaRed-700 rounded-2xl bg-white overflow-hidden shadow-inner flex items-center justify-center">
-                        
-                        <!-- Tian Zi Ge Grid Background Lines -->
-                        <div class="absolute inset-0 grid grid-cols-2 grid-rows-2 pointer-events-none">
-                            <div class="border-r border-b border-dashed border-rose-300/60"></div>
-                            <div class="border-b border-dashed border-rose-300/60"></div>
-                            <div class="border-r border-dashed border-rose-300/60"></div>
-                            <div></div>
-                        </div>
-
-                        <!-- Guide Ghost Character Overlay -->
-                        <div id="canvas-guide-overlay" class="absolute inset-0 flex items-center justify-center text-[180px] sm:text-[220px] font-chinese text-slate-200 select-none pointer-events-none transition-opacity duration-300 opacity-60">
-                            一
-                        </div>
-
-                        <!-- Interactive Canvas -->
-                        <canvas id="writing-canvas" class="relative z-10 w-full h-full cursor-crosshair touch-none"></canvas>
-                    </div>
-
-                    <!-- Writing Toolbar Controls -->
-                    <div class="w-full max-w-[360px] sm:max-w-[400px] mt-4 flex items-center justify-between gap-2">
-                        <!-- Color Options -->
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xs font-bold text-slate-500">Ink:</span>
-                            <button onclick="setPenColor('#1e293b')" class="w-7 h-7 rounded-full bg-slate-800 border-2 border-white shadow-md focus:ring-2 focus:ring-offset-1 focus:ring-slate-800"></button>
-                            <button onclick="setPenColor('#be123c')" class="w-7 h-7 rounded-full bg-chinaRed-700 border-2 border-white shadow-md focus:ring-2 focus:ring-offset-1 focus:ring-chinaRed-700"></button>
-                            <button onclick="setPenColor('#0d9488')" class="w-7 h-7 rounded-full bg-teal-600 border-2 border-white shadow-md focus:ring-2 focus:ring-offset-1 focus:ring-teal-600"></button>
-                        </div>
-
-                        <!-- Brush Size Slider -->
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xs font-bold text-slate-500"><i class="fas fa-paint-brush"></i></span>
-                            <input type="range" id="brush-size" min="4" max="24" value="12" class="w-20 accent-chinaRed-700">
-                        </div>
-
-                        <!-- Toggle Ghost Guide -->
-                        <button onclick="toggleGhostGuide()" class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-200">
-                            Toggle Trace
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Pillar 3: Listening (听 - Tīng) & Tone Master -->
-        <section id="listening" class="py-12 bg-purple-950/5 border-y border-purple-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="text-center max-w-3xl mx-auto mb-10">
-                    <div class="inline-flex items-center space-x-2 text-purple-700 font-bold text-xs uppercase tracking-wider bg-purple-100 px-3 py-1 rounded-full">
-                        <i class="fas fa-headphones"></i>
-                        <span>Pillar 3: Learn By Listening</span>
-                    </div>
-                    <h2 class="text-2xl sm:text-4xl font-black text-slate-900 font-chinese mt-2">
-                        听 (Tīng) • The 4 Mandarin Tones
-                    </h2>
-                    <p class="text-slate-600 text-sm sm:text-base mt-1">
-                        Mandarin is a tonal language! Changing pitch changes the word meaning completely (e.g. mā = mother vs. mǎ = horse).
-                    </p>
-                </div>
-
-                <!-- Tones Visual Breakdown Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-                    
-                    <!-- Tone 1 -->
-                    <div onclick="speakChinese('妈', 'mā')" class="bg-white rounded-2xl p-5 border-2 border-blue-200 shadow-sm hover:shadow-md cursor-pointer transition">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-black uppercase text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">1st Tone (55)</span>
-                            <i class="fas fa-volume-high text-blue-500"></i>
-                        </div>
-                        <h3 class="text-xl font-bold font-chinese text-slate-900">mā (妈)</h3>
-                        <p class="text-xs text-slate-500">High & Level Pitch</p>
-                        <!-- Pitch Contour Diagram SVG -->
-                        <div class="h-16 my-3 bg-slate-50 rounded-xl flex items-center justify-center p-2">
-                            <svg class="w-full h-full text-blue-500" viewBox="0 0 100 40">
-                                <line x1="10" y1="10" x2="90" y2="10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <p class="text-[11px] text-slate-600">Like saying "Aah~" at the doctor!</p>
-                    </div>
-
-                    <!-- Tone 2 -->
-                    <div onclick="speakChinese('麻', 'má')" class="bg-white rounded-2xl p-5 border-2 border-emerald-200 shadow-sm hover:shadow-md cursor-pointer transition">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-black uppercase text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">2nd Tone (35)</span>
-                            <i class="fas fa-volume-high text-emerald-500"></i>
-                        </div>
-                        <h3 class="text-xl font-bold font-chinese text-slate-900">má (麻)</h3>
-                        <p class="text-xs text-slate-500">Rising Pitch</p>
-                        <!-- Pitch Contour Diagram SVG -->
-                        <div class="h-16 my-3 bg-slate-50 rounded-xl flex items-center justify-center p-2">
-                            <svg class="w-full h-full text-emerald-500" viewBox="0 0 100 40">
-                                <path d="M 10 32 Q 50 25 90 8" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <p class="text-[11px] text-slate-600">Like asking "What?!" in surprise.</p>
-                    </div>
-
-                    <!-- Tone 3 -->
-                    <div onclick="speakChinese('马', 'mǎ')" class="bg-white rounded-2xl p-5 border-2 border-amber-200 shadow-sm hover:shadow-md cursor-pointer transition">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-black uppercase text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">3rd Tone (214)</span>
-                            <i class="fas fa-volume-high text-amber-500"></i>
-                        </div>
-                        <h3 class="text-xl font-bold font-chinese text-slate-900">mǎ (马)</h3>
-                        <p class="text-xs text-slate-500">Dipping & Rising</p>
-                        <!-- Pitch Contour Diagram SVG -->
-                        <div class="h-16 my-3 bg-slate-50 rounded-xl flex items-center justify-center p-2">
-                            <svg class="w-full h-full text-amber-500" viewBox="0 0 100 40">
-                                <path d="M 10 12 L 50 34 L 90 8" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <p class="text-[11px] text-slate-600">Like saying "Well..." slowly.</p>
-                    </div>
-
-                    <!-- Tone 4 -->
-                    <div onclick="speakChinese('骂', 'mà')" class="bg-white rounded-2xl p-5 border-2 border-rose-200 shadow-sm hover:shadow-md cursor-pointer transition">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-black uppercase text-rose-600 bg-rose-50 px-2.5 py-1 rounded-md">4th Tone (51)</span>
-                            <i class="fas fa-volume-high text-rose-500"></i>
-                        </div>
-                        <h3 class="text-xl font-bold font-chinese text-slate-900">mà (骂)</h3>
-                        <p class="text-xs text-slate-500">Sharp Falling Pitch</p>
-                        <!-- Pitch Contour Diagram SVG -->
-                        <div class="h-16 my-3 bg-slate-50 rounded-xl flex items-center justify-center p-2">
-                            <svg class="w-full h-full text-rose-500" viewBox="0 0 100 40">
-                                <line x1="10" y1="8" x2="90" y2="34" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <p class="text-[11px] text-slate-600">Like shouting "Hey!" firmly.</p>
-                    </div>
-
-                </div>
-
-                <!-- Tone Master Mini-Game Engine Container -->
-                <div id="tools" class="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden border border-slate-800">
-                    <div class="relative z-10 max-w-2xl mx-auto text-center space-y-6">
-                        
-                        <div class="inline-flex items-center space-x-2 bg-purple-500/20 text-purple-300 border border-purple-400/30 px-3 py-1 rounded-full text-xs font-bold">
-                            <i class="fas fa-gamepad"></i>
-                            <span>Interactive Ear Trainer</span>
-                        </div>
-
-                        <h3 class="text-2xl sm:text-3xl font-black font-chinese">
-                            🎮 Tone Master Mini-Game
-                        </h3>
-                        <p class="text-xs sm:text-sm text-slate-300">
-                            Listen to the audio clip played by Ms. Zhao's virtual voice assistant, then select the correct tone number to score points!
-                        </p>
-
-                        <!-- Game Score Dashboard -->
-                        <div class="flex justify-center space-x-6 text-center bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
-                            <div>
-                                <p class="text-[10px] uppercase font-extrabold text-slate-400">Score</p>
-                                <p id="game-score" class="text-2xl font-black text-amber-400">0</p>
-                            </div>
-                            <div class="border-r border-slate-700"></div>
-                            <div>
-                                <p class="text-[10px] uppercase font-extrabold text-slate-400">Streak</p>
-                                <p id="game-streak" class="text-2xl font-black text-emerald-400">0 🔥</p>
-                            </div>
-                            <div class="border-r border-slate-700"></div>
-                            <div>
-                                <p class="text-[10px] uppercase font-extrabold text-slate-400">Round</p>
-                                <p id="game-round" class="text-2xl font-black text-purple-400">1/5</p>
-                            </div>
-                        </div>
-
-                        <!-- Audio Play Trigger -->
-                        <div class="py-4">
-                            <button onclick="playQuizAudio()" class="px-6 py-4 bg-gradient-to-r from-chinaRed-600 to-rose-600 hover:from-chinaRed-500 hover:to-rose-500 text-white font-extrabold rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-3 mx-auto">
-                                <i class="fas fa-volume-up text-xl animate-pulse"></i>
-                                <span class="text-lg">Play Current Tone Audio</span>
-                            </button>
-                            <p id="quiz-pinyin-display" class="mt-3 text-sm font-mono text-purple-300 font-bold">
-                                Syllable Target: <span id="target-syllable" class="text-amber-300 text-lg">?</span>
+                            <p class="text-xs sm:text-sm text-slate-300 mt-1">
+                                Mandarin Chinese Teacher • Josiah Quincy Upper School (JQUS)
+                            </p>
+                            <p class="text-xs text-amber-300 font-mono mt-1">
+                                yzhao@bostonpublicschools.org
                             </p>
                         </div>
-
-                        <!-- Answer Choice Buttons Grid -->
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                            <button onclick="submitToneGuess(1)" class="tone-btn py-3.5 bg-slate-800 hover:bg-blue-600/30 border border-slate-700 hover:border-blue-500 rounded-xl font-bold text-sm text-slate-100 transition">
-                                1st Tone (ā)
-                            </button>
-                            <button onclick="submitToneGuess(2)" class="tone-btn py-3.5 bg-slate-800 hover:bg-emerald-600/30 border border-slate-700 hover:border-emerald-500 rounded-xl font-bold text-sm text-slate-100 transition">
-                                2nd Tone (á)
-                            </button>
-                            <button onclick="submitToneGuess(3)" class="tone-btn py-3.5 bg-slate-800 hover:bg-amber-600/30 border border-slate-700 hover:border-amber-500 rounded-xl font-bold text-sm text-slate-100 transition">
-                                3rd Tone (ǎ)
-                            </button>
-                            <button onclick="submitToneGuess(4)" class="tone-btn py-3.5 bg-slate-800 hover:bg-rose-600/30 border border-slate-700 hover:border-rose-500 rounded-xl font-bold text-sm text-slate-100 transition">
-                                4th Tone (à)
-                            </button>
-                        </div>
-
-                        <!-- Feedback Message Area -->
-                        <div id="game-feedback" class="h-8 text-sm font-bold flex items-center justify-center">
-                            <!-- Feedback injected dynamically -->
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Pillar 4: Reading & Culture (读与文化) -->
-        <section id="reading" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <div class="inline-flex items-center space-x-2 text-amber-700 font-bold text-xs uppercase tracking-wider bg-amber-100 px-3 py-1 rounded-full">
-                    <i class="fas fa-book-open"></i>
-                    <span>Pillar 4: Learn By Reading & Culture</span>
-                </div>
-                <h2 class="text-2xl sm:text-4xl font-black text-slate-900 font-chinese mt-2">
-                    读 (Dú) • Pinyin, Radicals & Culture
-                </h2>
-                <p class="text-slate-600 text-sm sm:text-base mt-1">
-                    How do Chinese characters work? They aren't random lines—they are made of radical clues!
-                </p>
-            </div>
-
-            <!-- Radical Clues Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <!-- Radical 1 -->
-                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-chinaRed-700 font-chinese font-bold text-2xl flex items-center justify-center">
-                        女
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 font-chinese">Female Radical (nǚ)</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        When you see <span class="font-bold text-slate-900">女</span> in a character, it often relates to family or people!
-                    </p>
-                    <div class="pt-2 border-t border-slate-100 text-xs text-slate-500">
-                        Examples: <span class="font-chinese font-bold text-slate-800">妈 (mother), 姐 (older sister), 妹 (younger sister)</span>
-                    </div>
-                </div>
-
-                <!-- Radical 2 -->
-                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 font-chinese font-bold text-2xl flex items-center justify-center">
-                        氵
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 font-chinese">Three Water Drops (sāndiǎnshuǐ)</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        3 drops on the left mean the character relates to water, liquids, or body of water!
-                    </p>
-                    <div class="pt-2 border-t border-slate-100 text-xs text-slate-500">
-                        Examples: <span class="font-chinese font-bold text-slate-800">河 (river), 海 (ocean), 洗 (to wash)</span>
-                    </div>
-                </div>
-
-                <!-- Radical 3 -->
-                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 font-chinese font-bold text-2xl flex items-center justify-center">
-                        木
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 font-chinese">Wood / Tree Radical (mù)</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Characters with <span class="font-bold text-slate-900">木</span> usually refer to trees, forests, or objects made of wood!
-                    </p>
-                    <div class="pt-2 border-t border-slate-100 text-xs text-slate-500">
-                        Examples: <span class="font-chinese font-bold text-slate-800">林 (grove), 森 (forest), 椅 (chair)</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Day 1 Readiness Checklist & Passport Generator -->
-        <section class="py-12 bg-rose-900 text-white oriental-pattern">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    
-                    <!-- Left: Readiness Checklist -->
-                    <div class="lg:col-span-6 bg-slate-900/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-rose-400/30 shadow-2xl">
-                        <div class="flex items-center justify-between mb-6">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Interactive Goal</span>
-                                <h3 class="text-xl sm:text-2xl font-black font-chinese">
-                                    ✅ Day 1 Student Readiness
-                                </h3>
-                            </div>
-                            <span id="checklist-counter" class="text-xs font-bold bg-amber-400 text-slate-900 px-3 py-1 rounded-full">
-                                0 / 4 Completed
-                            </span>
-                        </div>
-
-                        <!-- Progress Bar -->
-                        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden mb-6">
-                            <div id="checklist-progress" class="bg-gradient-to-r from-amber-400 to-emerald-400 h-full w-0 transition-all duration-500"></div>
-                        </div>
-
-                        <!-- Checkbox Items -->
-                        <div class="space-y-3">
-                            <label class="flex items-start space-x-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 cursor-pointer hover:bg-slate-800 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="checklist-item mt-1 rounded text-chinaRed-600 focus:ring-amber-400 w-4 h-4">
-                                <span class="text-xs sm:text-sm text-slate-200">
-                                    I copied Ms. Zhao's email (<span class="font-mono text-amber-300">yzhao@bostonpublicschools.org</span>).
-                                </span>
-                            </label>
-
-                            <label class="flex items-start space-x-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 cursor-pointer hover:bg-slate-800 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="checklist-item mt-1 rounded text-chinaRed-600 focus:ring-amber-400 w-4 h-4">
-                                <span class="text-xs sm:text-sm text-slate-200">
-                                    I practiced speaking <span class="font-chinese text-amber-300 font-bold">你好</span> and <span class="font-chinese text-amber-300 font-bold">老师好</span> aloud using the audio player.
-                                </span>
-                            </label>
-
-                            <label class="flex items-start space-x-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 cursor-pointer hover:bg-slate-800 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="checklist-item mt-1 rounded text-chinaRed-600 focus:ring-amber-400 w-4 h-4">
-                                <span class="text-xs sm:text-sm text-slate-200">
-                                    I practiced writing at least one stroke on the Tian Zi Ge drawing canvas.
-                                </span>
-                            </label>
-
-                            <label class="flex items-start space-x-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 cursor-pointer hover:bg-slate-800 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="checklist-item mt-1 rounded text-chinaRed-600 focus:ring-amber-400 w-4 h-4">
-                                <span class="text-xs sm:text-sm text-slate-200">
-                                    I learned that Mandarin Chinese has 4 distinct pitch tones!
-                                </span>
-                            </label>
-                        </div>
                     </div>
 
-                    <!-- Right: Student Chinese Passport Generator -->
-                    <div id="passport" class="lg:col-span-6 bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-amber-300">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="w-10 h-10 rounded-xl bg-amber-400 text-slate-900 flex items-center justify-center font-bold text-xl">
-                                🛂
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-black font-chinese">
-                                    My 7th Grade Chinese Passport
-                                </h3>
-                                <p class="text-xs text-slate-500">Generate your personalized Day 1 student badge!</p>
-                            </div>
-                        </div>
-
-                        <!-- Input Form -->
-                        <div class="space-y-4 text-xs sm:text-sm">
-                            <div>
-                                <label class="block font-bold text-slate-700 mb-1">Student English Name:</label>
-                                <input type="text" id="passport-name" placeholder="e.g., Alex Rivera" oninput="renderPassport()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-chinaRed-600 focus:outline-none font-medium">
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <div>
-                                    <label class="block font-bold text-slate-700 mb-1">Favorite Topic:</label>
-                                    <select id="passport-interest" onchange="renderPassport()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-chinaRed-600 focus:outline-none">
-                                        <option value="🍜 Delicious Food">🍜 Delicious Food</option>
-                                        <option value="🐉 Chinese Culture & History">🐉 Culture & History</option>
-                                        <option value="🎵 Chinese Pop Music">🎵 Music & Songs</option>
-                                        <option value="🥋 Martial Arts & Kung Fu">🥋 Martial Arts</option>
-                                        <option value="🐼 Wildlife & Nature">🐼 Pandas & Nature</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-slate-700 mb-1">Day 1 Learning Goal:</label>
-                                    <input type="text" id="passport-goal" placeholder="e.g. Master all 4 tones!" oninput="renderPassport()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-chinaRed-600 focus:outline-none font-medium">
-                                </div>
-                            </div>
-
-                            <!-- Live Passport Preview Card -->
-                            <div id="passport-preview" class="mt-4 p-5 rounded-2xl bg-gradient-to-br from-chinaRed-900 to-rose-800 text-white shadow-md relative overflow-hidden border-2 border-amber-400">
-                                <div class="flex justify-between items-start border-b border-rose-400/30 pb-3 mb-3">
-                                    <div>
-                                        <p class="text-[10px] uppercase font-bold text-amber-300 tracking-wider">Josiah Quincy Upper School</p>
-                                        <p class="text-sm font-bold font-chinese">7th Grade Mandarin Student Passport</p>
-                                    </div>
-                                    <span class="text-2xl">🏮</span>
-                                </div>
-
-                                <div class="grid grid-cols-2 gap-2 text-xs">
-                                    <div>
-                                        <p class="text-[10px] text-rose-200 uppercase font-bold">Student Name</p>
-                                        <p id="card-name" class="font-bold text-amber-200">Alex Rivera</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-[10px] text-rose-200 uppercase font-bold">Teacher</p>
-                                        <p class="font-bold">Ms. Zhao (赵老师)</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-[10px] text-rose-200 uppercase font-bold">Interest Focus</p>
-                                        <p id="card-interest" class="font-bold text-xs">🍜 Delicious Food</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-[10px] text-rose-200 uppercase font-bold">Class Status</p>
-                                        <p class="font-bold text-emerald-300">Official Day 1 Learner</p>
-                                    </div>
-                                </div>
-
-                                <div class="mt-3 pt-2 border-t border-rose-400/30 flex items-center justify-between">
-                                    <p id="card-goal" class="text-[11px] italic text-rose-100">"Master all 4 tones!"</p>
-                                    <span class="text-[9px] bg-amber-400 text-slate-900 px-2 py-0.5 rounded font-bold uppercase">JQUS 2026</span>
-                                </div>
-                            </div>
-
-                            <button onclick="window.print()" class="w-full py-2.5 bg-slate-900 text-white font-bold rounded-xl text-xs hover:bg-chinaRed-700 transition flex items-center justify-center space-x-2">
-                                <i class="fas fa-print"></i>
-                                <span>Print / Save Student Passport</span>
-                            </button>
-
-                        </div>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="copyTeacherEmail()" class="px-5 py-3 bg-chinaRed-700 hover:bg-chinaRed-800 text-white font-bold rounded-xl text-xs sm:text-sm transition flex items-center space-x-2">
+                            <i class="fas fa-copy"></i>
+                            <span>Copy Teacher Email</span>
+                        </button>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -972,14 +358,14 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs no-print">
+    <footer class="bg-slate-950 text-slate-500 py-8 border-t border-slate-900 text-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
                 <div class="w-8 h-8 rounded-lg bg-chinaRed-700 text-amber-300 font-bold font-chinese flex items-center justify-center text-sm">
                     赵
                 </div>
                 <div>
-                    <p class="font-bold text-slate-200">7th Grade Chinese Class • Ms. Zhao</p>
+                    <p class="font-bold text-slate-300">Mandarin Chinese Department • Ms. Zhao</p>
                     <p class="text-[11px] text-slate-500">Josiah Quincy Upper School • Boston Public Schools</p>
                 </div>
             </div>
@@ -989,97 +375,19 @@
         </div>
     </footer>
 
-    <!-- Syllabus & Course Outline Modal -->
-    <div id="syllabus-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white text-slate-900 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border-2 border-rose-200">
-            
-            <button onclick="closeSyllabusModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-rose-100 hover:text-chinaRed-700 flex items-center justify-center font-bold transition">
-                ✕
-            </button>
-
-            <div class="flex items-center space-x-3 mb-6">
-                <div class="w-12 h-12 rounded-2xl bg-chinaRed-700 text-amber-300 font-bold font-chinese flex items-center justify-center text-2xl">
-                    纲
-                </div>
-                <div>
-                    <span class="text-xs font-bold text-chinaRed-700 uppercase tracking-wider">JQUS 7th Grade Chinese Syllabus</span>
-                    <h2 class="text-2xl font-black font-chinese">Course Quick Guide • Ms. Zhao</h2>
-                </div>
-            </div>
-
-            <div class="space-y-5 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100">
-                    <h3 class="font-bold text-chinaRed-800 text-sm mb-1">📬 Teacher Contact Information</h3>
-                    <p><strong class="text-slate-900">Name:</strong> Ms. Zhao (赵老师)</p>
-                    <p><strong class="text-slate-900">Email:</strong> yzhao@bostonpublicschools.org</p>
-                    <p><strong class="text-slate-900">School:</strong> Josiah Quincy Upper School (JQUS)</p>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-slate-900 text-sm mb-2">📊 Grading Breakdown</h3>
-                    <ul class="grid grid-cols-2 gap-2 text-xs">
-                        <li class="p-2.5 bg-slate-100 rounded-xl">🗣️ <strong>Speaking & Listening:</strong> 30%</li>
-                        <li class="p-2.5 bg-slate-100 rounded-xl">✍️ <strong>Writing & Characters:</strong> 30%</li>
-                        <li class="p-2.5 bg-slate-100 rounded-xl">📂 <strong>Class Projects & Passport:</strong> 20%</li>
-                        <li class="p-2.5 bg-slate-100 rounded-xl">🌟 <strong>Daily Participation & Effort:</strong> 20%</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-slate-900 text-sm mb-2">🎒 Required Classroom Supplies</h3>
-                    <ul class="list-disc list-inside space-y-1 text-slate-600">
-                        <li>1 Dedicated Chinese Notebook (Grid paper preferred)</li>
-                        <li>Pencils and erasers (for stroke order practice)</li>
-                        <li>Highlighters (for color coding tones)</li>
-                        <li>School-issued Chromebook for audio practice</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-slate-900 text-sm mb-2">🌟 Classroom Rules</h3>
-                    <p class="text-slate-600">1. Practice courage over perfection. <br>2. Support your classmates when speaking aloud. <br>3. Speak <span class="font-chinese font-bold text-chinaRed-700">老师好</span> when entering the room!</p>
-                </div>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-slate-200 flex justify-end">
-                <button onclick="closeSyllabusModal()" class="px-5 py-2.5 bg-chinaRed-700 text-white rounded-xl font-bold text-xs hover:bg-chinaRed-800 transition">
-                    Close Syllabus
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Helpers -->
     <script>
-        // --- Web Speech API Text-to-Speech Engine ---
-        let currentAudioSpeed = 0.9;
-
-        function setAudioSpeed(speed) {
-            currentAudioSpeed = speed;
-            document.getElementById('speed-slow').className = speed === 0.65 
-                ? 'px-2 py-1 text-xs font-bold rounded-lg bg-emerald-600 text-white shadow-xs' 
-                : 'px-2 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-600 hover:bg-emerald-50';
-            
-            document.getElementById('speed-normal').className = speed === 0.9 
-                ? 'px-2 py-1 text-xs font-bold rounded-lg bg-emerald-600 text-white shadow-xs' 
-                : 'px-2 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-600 hover:bg-emerald-50';
-            
-            showToast(`Speech rate set to ${speed === 0.65 ? 'Slow (0.65x)' : 'Normal (0.9x)'}`);
-        }
-
         function speakChinese(text, pinyinPrompt = '') {
             if (!('speechSynthesis' in window)) {
                 showToast('Speech synthesis not supported in this browser.');
                 return;
             }
 
-            window.speechSynthesis.cancel(); // Cancel active audio
+            window.speechSynthesis.cancel();
             const utter = new SpeechSynthesisUtterance(text);
             utter.lang = 'zh-CN';
-            utter.rate = currentAudioSpeed;
-            utter.pitch = 1.0;
+            utter.rate = 0.85;
 
-            // Attempt to locate native zh-CN voice if available
             const voices = window.speechSynthesis.getVoices();
             const zhVoice = voices.find(v => v.lang && (v.lang.includes('zh') || v.lang.includes('cmn')));
             if (zhVoice) utter.voice = zhVoice;
@@ -1090,14 +398,6 @@
             }
         }
 
-        // Initialize voices on load
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.onvoiceschanged = () => {
-                window.speechSynthesis.getVoices();
-            };
-        }
-
-        // --- Copy Email to Clipboard ---
         function copyTeacherEmail() {
             const email = "yzhao@bostonpublicschools.org";
             try {
@@ -1113,7 +413,6 @@
             }
         }
 
-        // --- Toast Notification Helper ---
         let toastTimeout;
         function showToast(msg) {
             const toast = document.getElementById('toast');
@@ -1127,230 +426,11 @@
             }, 3000);
         }
 
-        // --- HTML5 Canvas Writing Studio Logic ---
-        const canvas = document.getElementById('writing-canvas');
-        const ctx = canvas.getContext('2d');
-        let isDrawing = false;
-        let penColor = '#1e293b';
-        let isGhostVisible = true;
-
-        function resizeCanvas() {
-            const rect = canvas.parentElement.getBoundingClientRect();
-            canvas.width = rect.width;
-            canvas.height = rect.height;
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-        }
-
-        window.addEventListener('load', resizeCanvas);
-        window.addEventListener('resize', resizeCanvas);
-
-        function startDrawing(e) {
-            isDrawing = true;
-            ctx.beginPath();
-            const pos = getCanvasPos(e);
-            ctx.moveTo(pos.x, pos.y);
-        }
-
-        function draw(e) {
-            if (!isDrawing) return;
-            const pos = getCanvasPos(e);
-            const brushSize = document.getElementById('brush-size').value;
-
-            ctx.strokeStyle = penColor;
-            ctx.lineWidth = brushSize;
-            ctx.lineTo(pos.x, pos.y);
-            ctx.stroke();
-        }
-
-        function stopDrawing() {
-            isDrawing = false;
-        }
-
-        function getCanvasPos(e) {
-            const rect = canvas.getBoundingClientRect();
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            return {
-                x: clientX - rect.left,
-                y: clientY - rect.top
-            };
-        }
-
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mousemove', draw);
-        canvas.addEventListener('mouseup', stopDrawing);
-        canvas.addEventListener('mouseleave', stopDrawing);
-
-        canvas.addEventListener('touchstart', startDrawing);
-        canvas.addEventListener('touchmove', draw);
-        canvas.addEventListener('touchend', stopDrawing);
-
-        function clearCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            showToast("Canvas cleared! Ready to write.");
-        }
-
-        function setPenColor(color) {
-            penColor = color;
-            showToast("Ink color updated!");
-        }
-
-        function selectCharacter(char, label) {
-            document.getElementById('canvas-guide-overlay').innerText = char;
-            document.getElementById('current-char-info').innerHTML = `Active Guide: <span class="text-chinaRed-700 font-chinese text-xl">${char}</span> (${label})`;
-            clearCanvas();
-            speakChinese(char);
-        }
-
-        function toggleGhostGuide() {
-            const overlay = document.getElementById('canvas-guide-overlay');
-            isGhostVisible = !isGhostVisible;
-            overlay.style.opacity = isGhostVisible ? '0.6' : '0';
-        }
-
-        // --- Web Audio API Tone Sound Effects Helper ---
-        function playToneBeep(isCorrect) {
-            try {
-                const AudioCtx = window.AudioContext || window.webkitAudioContext;
-                if (!AudioCtx) return;
-                const audioCtx = new AudioCtx();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                if (isCorrect) {
-                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
-                    osc.frequency.exponentialRampToValueAtTime(659.25, audioCtx.currentTime + 0.2); // E5
-                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.3);
-                } else {
-                    osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
-                    osc.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + 0.2);
-                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.25);
-                }
-            } catch(e){}
-        }
-
-        // Tone Master Mini-Game State
-        const quizBank = [
-            { text: '妈', pinyinBase: 'ma', tone: 1, spoken: 'mā' },
-            { text: '麻', pinyinBase: 'ma', tone: 2, spoken: 'má' },
-            { text: '马', pinyinBase: 'ma', tone: 3, spoken: 'mǎ' },
-            { text: '骂', pinyinBase: 'ma', tone: 4, spoken: 'mà' },
-            { text: '八', pinyinBase: 'ba', tone: 1, spoken: 'bā' },
-            { text: '拔', pinyinBase: 'ba', tone: 2, spoken: 'bá' },
-            { text: '把', pinyinBase: 'ba', tone: 3, spoken: 'bǎ' },
-            { text: '爸', pinyinBase: 'ba', tone: 4, spoken: 'bà' },
-            { text: '他', pinyinBase: 'ta', tone: 1, spoken: 'tā' },
-            { text: '塔', pinyinBase: 'ta', tone: 3, spoken: 'tǎ' },
-            { text: '大', pinyinBase: 'da', tone: 4, spoken: 'dà' }
-        ];
-
-        let currentQuestionIdx = 0;
-        let gameScore = 0;
-        let gameStreak = 0;
-        let currentRound = 1;
-        const totalRounds = 5;
-
-        function playQuizAudio() {
-            const item = quizBank[currentQuestionIdx];
-            document.getElementById('target-syllable').innerText = `${item.pinyinBase} (?)`;
-            speakChinese(item.text);
-        }
-
-        function submitToneGuess(guessedTone) {
-            const currentItem = quizBank[currentQuestionIdx];
-            const feedbackEl = document.getElementById('game-feedback');
-
-            if (guessedTone === currentItem.tone) {
-                gameScore += 100 + (gameStreak * 20);
-                gameStreak++;
-                playToneBeep(true);
-
-                feedbackEl.innerHTML = `<span class="text-emerald-400">🎉 Correct! ${currentItem.text} is Tone ${currentItem.tone} (${currentItem.spoken}).</span>`;
-
-                if (typeof confetti === 'function' && gameStreak % 3 === 0) {
-                    confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
-                }
-            } else {
-                gameStreak = 0;
-                playToneBeep(false);
-                feedbackEl.innerHTML = `<span class="text-rose-400">❌ Oops! That was Tone ${currentItem.tone} (${currentItem.spoken}). Try next round!</span>`;
-            }
-
-            document.getElementById('game-score').innerText = gameScore;
-            document.getElementById('game-streak').innerText = `${gameStreak} 🔥`;
-
-            // Next round logic
-            if (currentRound < totalRounds) {
-                currentRound++;
-                currentQuestionIdx = (currentQuestionIdx + 1) % quizBank.length;
-                document.getElementById('game-round').innerText = `${currentRound}/${totalRounds}`;
-                setTimeout(() => {
-                    playQuizAudio();
-                }, 1200);
-            } else {
-                setTimeout(() => {
-                    feedbackEl.innerHTML = `<span class="text-amber-300 text-base font-extrabold">🏆 Game Over! Final Score: ${gameScore} points! Great job training your ears!</span>`;
-                    if (typeof confetti === 'function') {
-                        confetti({ particleCount: 100, spread: 90, origin: { y: 0.6 } });
-                    }
-                }, 1000);
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
             }
         }
-
-        // --- Day 1 Readiness Checklist Logic ---
-        function updateChecklist() {
-            const items = document.querySelectorAll('.checklist-item');
-            let completed = 0;
-            items.forEach(item => {
-                if (item.checked) completed++;
-            });
-
-            const percent = (completed / items.length) * 100;
-            document.getElementById('checklist-counter').innerText = `${completed} / ${items.length} Completed`;
-            document.getElementById('checklist-progress').style.width = `${percent}%`;
-
-            if (completed === items.length) {
-                showToast("🌟 Congratulations! You are 100% Day 1 Ready for Ms. Zhao's Chinese Class!");
-                if (typeof confetti === 'function') {
-                    confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
-                }
-            }
-        }
-
-        // --- Student Chinese Passport Generator Logic ---
-        function renderPassport() {
-            const nameInput = document.getElementById('passport-name').value.trim();
-            const interestInput = document.getElementById('passport-interest').value;
-            const goalInput = document.getElementById('passport-goal').value.trim();
-
-            document.getElementById('card-name').innerText = nameInput || "Alex Rivera";
-            document.getElementById('card-interest').innerText = interestInput;
-            document.getElementById('card-goal').innerText = goalInput ? `"${goalInput}"` : `"Master all 4 tones!"`;
-        }
-
-        // --- Syllabus Modal Logic ---
-        function openSyllabusModal() {
-            document.getElementById('syllabus-modal').classList.remove('hidden');
-        }
-
-        function closeSyllabusModal() {
-            document.getElementById('syllabus-modal').classList.add('hidden');
-        }
-
-        // Start Quiz on initial view setup
-        window.addEventListener('DOMContentLoaded', () => {
-            renderPassport();
-        });
     </script>
 </body>
 </html>
