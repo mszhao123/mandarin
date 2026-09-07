@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chinese Language 101 | Starter Guide</title>
+  <!-- Google Fonts for modern & fun typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+SC:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #FF4757;
+      --primary-hover: #E84118;
+      --secondary: #FFA502;
+      --accent-blue: #1E90FF;
+      --accent-green: #2ED573;
+      --accent-purple: #9B59B6;
+      --bg-color: #F8F9FA;
+      --card-bg: #FFFFFF;
+      --text-main: #2F3542;
+      --text-muted: #747D8C;
+      --border-radius: 18px;
+      --shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--card-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-family: 'Fredoka', cursive;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    header.hero {
+      background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    header.hero h1 {
+      font-family: 'Fredoka', cursive;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    header.hero p {
+      font-size: 1.2rem;
+      max-width: 650px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+    }
+
+    /* Section Styles */
+    section {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 35px;
+      margin-bottom: 35px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      font-family: 'Fredoka', cursive;
+      font-size: 1.8rem;
+      color: var(--text-main);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Comparison Section */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .comp-card {
+      padding: 25px;
+      border-radius: 14px;
+      border: 2px solid #EAEAEA;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .comp-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .comp-card.pinyin-card {
+      border-color: #70A1FF;
+      background: #F0F5FF;
+    }
+
+    .comp-card.character-card {
+      border-color: #FF6B81;
+      background: #FFF0F2;
+    }
+
+    .comp-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .big-example {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 15px 0;
+      text-align: center;
+    }
+
+    /* Pinyin Section */
+    .pinyin-parts {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      background: #F1F2F6;
+      padding: 20px;
+      border-radius: 14px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .part-box {
+      background: white;
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .part-box .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: bold;
+    }
+
+    .part-box .val {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    /* Tones Grid */
+    .tones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .tone-card {
+      background: #FFF;
+      border: 2px solid #CED6E0;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tone-card:hover, .tone-card.active {
+      border-color: var(--secondary);
+      background: #FFF9E6;
+      transform: scale(1.03);
+    }
+
+    .tone-mark {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--secondary);
+    }
+
+    /* Radical Section */
+    .lego-analogy {
+      background: #ECCC68;
+      color: #2F3542;
+      padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .lego-analogy span {
+      font-size: 2.5rem;
+    }
+
+    .radical-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .radical-item {
+      background: #F8F9FA;
+      border-left: 5px solid var(--accent-purple);
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .radical-char {
+      font-size: 1.8rem;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: bold;
+      color: var(--accent-purple);
+    }
+
+    /* Typing Simulator */
+    .simulator {
+      background: #2F3542;
+      color: white;
+      padding: 25px;
+      border-radius: 14px;
+      margin-top: 20px;
+    }
+
+    .sim-input-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .sim-input {
+      flex: 1;
+      padding: 12px 15px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    .sim-candidates {
+      margin-top: 15px;
+      background: #57606F;
+      padding: 12px;
+      border-radius: 8px;
+      display: flex;
+      gap: 15px;
+      font-size: 1.2rem;
+    }
+
+    .sim-candidate-item {
+      background: #747D8C;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .sim-candidate-item:hover {
+      background: var(--accent-green);
+    }
+
+    .sim-result {
+      margin-top: 15px;
+      font-size: 1.3rem;
+      color: var(--accent-green);
+      min-height: 35px;
+    }
+
+    /* 4 Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      text-align: center;
+      padding: 20px;
+      border-radius: 14px;
+      background: #F1F2F6;
+    }
+
+    .skill-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header.hero h1 { font-size: 2.2rem; }
+      .nav-links { display: none; } /* Simplified mobile */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">🇨🇳 Mandarin Starter</div>
+      <ul class="nav-links">
+        <li><a href="#pinyin-vs-chars">Pinyin vs Characters</a></li>
+        <li><a href="#pinyin">Pinyin & Tones</a></li>
+        <li><a href="#radicals">Radicals</a></li>
+        <li><a href="#typing">How to Type</a></li>
+        <li><a href="#skills">4 Core Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <header class="hero">
+    <h1>🚀 Unlocking Chinese Language</h1>
+    <p>Welcome 7th Graders! Discover how Pinyin, Characters, Radicals, and Typing all work together like magic.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Section 1: Pinyin vs Characters -->
+    <section id="pinyin-vs-chars">
+      <h2 class="section-title">💡 Pinyin vs. Chinese Characters: What's the Difference?</h2>
+      <p>Chinese doesn't use an alphabet like English! Instead, it uses two main systems working together:</p>
+
+      <div class="comparison-grid">
+        <div class="comp-card pinyin-card">
+          <h3>🅰️ Pinyin (拼音)</h3>
+          <p><strong>The Sound System:</strong> Uses English letters to spell out how words sound. It has <strong>tone marks</strong> above the vowels.</p>
+          <div class="big-example" style="color: #3742FA;">mā</div>
+          <p><em>Think of Pinyin as the "training wheels" to help you pronounce characters!</em></p>
+        </div>
+
+        <div class="comp-card character-card">
+          <h3>🎨 Character (汉字)</h3>
+          <p><strong>The Written Symbol:</strong> The actual Chinese writing! Each character represents a syllable and carries meaning/art.</p>
+          <div class="big-example" style="color: #FF4757;">妈</div>
+          <p><em>Means "Mom". Characters are what native speakers read and write every day!</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: How Pinyin Works -->
+    <section id="pinyin">
+      <h2 class="section-title">🔊 How Pinyin Works</h2>
+      <p>Every Pinyin syllable is created by combining up to <strong>3 parts</strong>:</p>
+
+      <div class="pinyin-parts">
+        <div class="part-box">
+          <div class="label">1. Initial (Start)</div>
+          <div class="val">m</div>
+        </div>
+        <div style="font-size: 1.5rem; font-weight: bold; color: var(--text-muted);">+</div>
+        <div class="part-box">
+          <div class="label">2. Final (End)</div>
+          <div class="val">a</div>
+        </div>
+        <div style="font-size: 1.5rem; font-weight: bold; color: var(--text-muted);">+</div>
+        <div class="part-box">
+          <div class="label">3. Tone (Pitch)</div>
+          <div class="val">¯</div>
+        </div>
+        <div style="font-size: 1.5rem; font-weight: bold; color: var(--text-muted);">=</div>
+        <div class="part-box" style="background: #ECCC68;">
+          <div class="label">Result</div>
+          <div class="val" style="color: #2F3542;">mā</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 25px; margin-bottom: 10px;">🎵 The 4 Tones (Pitch Matters!)</h3>
+      <p>In Chinese, changing your voice pitch changes the entire meaning of the word! Click a tone below to see how it works:</p>
+
+      <div class="tones-grid">
+        <div class="tone-card" onclick="showTone(1)">
+          <div class="tone-mark">mā ( ˉ )</div>
+          <strong>1st Tone</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">High & Flat 🎈<br><em>Means "Mother"</em></p>
+        </div>
+        <div class="tone-card" onclick="showTone(2)">
+          <div class="tone-mark">má ( ˊ )</div>
+          <strong>2nd Tone</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Rising 📈<br><em>Means "Hemp"</em></p>
+        </div>
+        <div class="tone-card" onclick="showTone(3)">
+          <div class="tone-mark">mǎ ( ˇ )</div>
+          <strong>3rd Tone</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Dip & Rise 🪃<br><em>Means "Horse"</em></p>
+        </div>
+        <div class="tone-card" onclick="showTone(4)">
+          <div class="tone-mark">mà ( ˋ )</div>
+          <strong>4th Tone</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Falling Sharp 📉<br><em>Means "Scold"</em></p>
+        </div>
+      </div>
+      <div id="tone-info" style="margin-top: 15px; padding: 12px; background: #F1F2F6; border-radius: 8px; text-align: center; font-weight: 600;">
+        💡 Click any tone card above to explore!
+      </div>
+    </section>
+
+    <!-- Section 3: How Radicals Work -->
+    <section id="radicals">
+      <h2 class="section-title">🧩 How Radicals Work (Chinese Lego Bricks!)</h2>
+      
+      <div class="lego-analogy">
+        <span>🧱</span>
+        <div>
+          <strong>Radicals (部首) are building blocks!</strong> Just like prefix/suffix in English or Lego pieces, Chinese characters are built from smaller parts that give you clues about the character's <strong>meaning</strong> or <strong>category</strong>.
+        </div>
+      </div>
+
+      <div class="radical-grid">
+        <div class="radical-item">
+          <div class="radical-char">氵 (Water)</div>
+          <p><strong>Clue:</strong> Related to liquid/water</p>
+          <hr style="margin: 8px 0; opacity: 0.3;">
+          <p>💧 河 (hé) = River</p>
+          <p>💧 海 (hǎi) = Ocean</p>
+          <p>💧 汁 (zhī) = Juice</p>
+        </div>
+
+        <div class="radical-item" style="border-left-color: var(--primary);">
+          <div class="radical-char" style="color: var(--primary);">女 (Woman)</div>
+          <p><strong>Clue:</strong> Related to females/family</p>
+          <hr style="margin: 8px 0; opacity: 0.3;">
+          <p>👩 妈 (mā) = Mom</p>
+          <p>👩 姐 (jiě) = Older Sister</p>
+          <p>👩 妹 (mèi) = Younger Sister</p>
+        </div>
+
+        <div class="radical-item" style="border-left-color: var(--secondary);">
+          <div class="radical-char" style="color: var(--secondary);">🔥 / 灬 (Fire)</div>
+          <p><strong>Clue:</strong> Related to heat or cooking</p>
+          <hr style="margin: 8px 0; opacity: 0.3;">
+          <p>🔥 热 (rè) = Hot</p>
+          <p>🔥 煎 (jiān) = To Fry</p>
+          <p>🔥 煮 (zhǔ) = To Boil</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: How to Type Chinese -->
+    <section id="typing">
+      <h2 class="section-title">⌨️ How Do People Type Chinese Characters?</h2>
+      <p>How do you fit 50,000 Chinese characters on a normal keyboard? Easy! You type using **Pinyin**, and the computer gives you options to select!</p>
+
+      <ol style="margin: 15px 0 15px 20px; line-height: 1.8;">
+        <li>Type the English letters for the Pinyin (e.g., type <code>nihao</code>).</li>
+        <li>A candidate bar pops up showing matching Chinese characters.</li>
+        <li>Press <code>Space</code> or tap the number key to pick the right character (e.g., <code>1. 你好</code>).</li>
+      </ol>
+
+      <!-- Interactive Typing Simulator -->
+      <div class="simulator">
+        <h3>🎮 Try the Interactive Typing Simulator:</h3>
+        <p style="font-size: 0.9rem; color: #A4B0BE; margin-top: 4px;">Type "<strong>nihao</strong>" or "<strong>laoshi</strong>" or "<strong>xiexie</strong>" below to see how it works!</p>
+        
+        <div class="sim-input-group">
+          <input type="text" id="simInput" class="sim-input" placeholder="Type pinyin here (e.g. nihao)..." onkeyup="handleSimTyping()">
+        </div>
+
+        <div id="simCandidates" class="sim-candidates" style="display: none;">
+          <span class="sim-candidate-item" onclick="selectCandidate('你好')">1. 你好</span>
+          <span class="sim-candidate-item" onclick="selectCandidate('拟好')">2. 拟好</span>
+        </div>
+
+        <div id="simResult" class="sim-result">Your Character Output: </div>
+      </div>
+    </section>
+
+    <!-- Section 5: The 4 Core Skills -->
+    <section id="skills">
+      <h2 class="section-title">🌟 Mastering the 4 Core Language Skills</h2>
+      <p style="margin-bottom: 20px;">Learning Chinese involves 4 connected super-skills:</p>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🎧</div>
+          <h3>1. Listening (听)</h3>
+          <p>Train your ears to recognize the 4 tones. Listening to Chinese music or cartoons helps a lot!</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🗣️</div>
+          <h3>2. Speaking (说)</h3>
+          <p>Practice aloud! Don't worry about tone mistakes—making mistakes is how your speech muscles grow.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">📖</div>
+          <h3>3. Reading (读)</h3>
+          <p>Spot the radicals inside characters! Start by reading Pinyin + Character paired books.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">✍️</div>
+          <h3>4. Writing (写)</h3>
+          <p>Characters are written in a specific order: Left-to-Right, Top-to-Bottom. It's like drawing art!</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Tone Display Helper
+    function showTone(toneNum) {
+      const infoBox = document.getElementById('tone-info');
+      const toneDetails = {
+        1: "1st Tone (mā): Keep your voice high and flat, like singing 'aaaah' at the doctor!",
+        2: "2nd Tone (má): Start middle and slide UP, like asking a question? 'What?!'",
+        3: "3rd Tone (mǎ): Dip down then curve back up, like saying 'Well... ok!'",
+        4: "4th Tone (mà): Drop sharply downwards, like shouting a fast 'No!'"
+      };
+      infoBox.innerText = toneDetails[toneNum];
+      infoBox.style.background = "#FFF9E6";
+      infoBox.style.color = "#D97706";
+    }
+
+    // Typing Simulator JS logic
+    const db = {
+      "nihao": ["1. 你好 (Hello)", "2. 拟好"],
+      "laoshi": ["1. 老师 (Teacher)", "2. 老实"],
+      "xiexie": ["1. 谢谢 (Thanks)", "2. 泻写"]
+    };
+
+    function handleSimTyping() {
+      const val = document.getElementById('simInput').value.toLowerCase().trim();
+      const candBox = document.getElementById('simCandidates');
+      
+      if (db[val]) {
+        candBox.style.display = 'flex';
+        candBox.innerHTML = db[val].map((item, idx) => {
+          const charStr = item.split(' ')[1];
+          return `<span class="sim-candidate-item" onclick="selectCandidate('${charStr}')">${item}</span>`;
+        }).join('');
+      } else {
+        candBox.style.display = 'none';
+      }
+    }
+
+    function selectCandidate(char) {
+      const res = document.getElementById('simResult');
+      res.innerHTML = `Your Character Output: <strong>${char}</strong> 🎉`;
+      document.getElementById('simInput').value = '';
+      document.getElementById('simCandidates').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
